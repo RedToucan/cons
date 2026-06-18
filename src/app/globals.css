@@ -1,0 +1,574 @@
+/* Global CSS Design System for a Classical Political Philosophy Blog */
+
+:root {
+  /* Classical Garden Color Palette (Light Theme) */
+  --bg-primary: #fbf9f3;      /* Warm book paper / soft ivory */
+  --bg-secondary: #f3efe5;    /* Slightly deeper warm tint for cards/footer */
+  --text-main: #272a27;       /* Deep warm charcoal */
+  --text-muted: #5e6660;      /* Muted sage gray for metadata */
+  --brand-navy: #153225;      /* Deep Forest Green for primary headings & authority */
+  --brand-burgundy: #9b5134;  /* Terracotta/Copper for links & highlights */
+  --brand-accent: #c09d3e;    /* Warm gold accent */
+  --border-color: #e5dfd2;    /* Soft warm earthy separator */
+  --card-shadow: 0 4px 12px rgba(21, 50, 37, 0.03);
+  --card-hover-shadow: 0 12px 24px rgba(21, 50, 37, 0.06);
+
+  /* Fonts */
+  --font-serif: var(--next-font-serif, 'Playfair Display', Georgia, serif);
+  --font-serif-body: var(--next-font-serif-body, 'Lora', Georgia, serif);
+  --font-sans: var(--next-font-sans, 'Inter', system-ui, -apple-system, sans-serif);
+  
+  --transition-smooth: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --max-width-content: 1100px;
+  --max-width-reading: 680px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Night Garden Palette (Dark Theme) */
+    --bg-primary: #0f1210;
+    --bg-secondary: #171c19;
+    --text-main: #e2e8e4;
+    --text-muted: #8d9890;
+    --brand-navy: #8cbfa3;      /* Soft light sage green */
+    --brand-burgundy: #e29375;  /* Warm peach/terracotta */
+    --brand-accent: #d4af37;    /* Gold */
+    --border-color: #242c27;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    --card-hover-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* Reset and Core Styling */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  transition: background-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+/* Typography Scale */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--brand-navy);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+a {
+  color: var(--brand-burgundy);
+  text-decoration: none;
+  transition: color var(--transition-smooth), opacity var(--transition-smooth);
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+/* Base Layout Containers */
+.container {
+  width: 100%;
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2.5rem 0;
+}
+
+/* --- Premium Editorial Layouts --- */
+
+/* Modern double line separators matching traditional print journals */
+.editorial-hr {
+  border: none;
+  height: 3px;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  margin: 1.5rem 0;
+}
+
+/* Header & Branding Styles */
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  padding: 2rem 0 1rem 0;
+  background-color: var(--bg-primary);
+}
+
+.logo-area {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.logo-sub {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+}
+
+.logo-title {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--brand-navy);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .logo-title {
+    font-size: 2rem;
+  }
+}
+
+/* Navigation Bar */
+.site-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 0.75rem 0;
+  text-transform: capitalize;
+}
+
+.nav-link {
+  color: var(--text-main);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--brand-burgundy);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--brand-burgundy);
+  transition: width var(--transition-smooth);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Featured Hero Article Card */
+.featured-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3.5rem;
+  align-items: center;
+}
+
+@media (max-width: 850px) {
+  .featured-hero {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.featured-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.featured-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.featured-content {
+  padding: 1rem 0;
+}
+
+.category-tag {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: bold;
+  color: var(--brand-burgundy);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.featured-title {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.featured-title a:hover {
+  color: var(--brand-burgundy);
+}
+
+.meta-line {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.meta-line span::after {
+  content: " • ";
+  margin: 0 0.5rem;
+}
+
+.meta-line span:last-child::after {
+  content: "";
+}
+
+.excerpt {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--text-main);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.read-more-btn {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--brand-navy);
+  border-bottom: 2px solid var(--brand-burgundy);
+  padding-bottom: 2px;
+}
+
+.read-more-btn:hover {
+  color: var(--brand-burgundy);
+  border-color: var(--brand-navy);
+}
+
+/* Two Column / Grid Layout for regular articles */
+.grid-section-title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  color: var(--brand-navy);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.article-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 0;
+  overflow: hidden;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.article-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-burgundy);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.article-card-content {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-smooth);
+}
+
+.article-card:hover .card-image {
+  transform: scale(1.03);
+}
+
+.card-title {
+  font-size: 1.45rem;
+  margin: 0.5rem 0 0.75rem 0;
+  flex-shrink: 0;
+}
+
+.card-title a {
+  color: var(--brand-navy);
+}
+
+.card-title a:hover {
+  color: var(--brand-burgundy);
+}
+
+.card-excerpt {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+/* Footer styles */
+.site-footer {
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  padding: 3rem 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-nav a {
+  color: var(--text-main);
+  font-family: var(--font-serif);
+}
+
+.footer-nav a:hover {
+  color: var(--brand-burgundy);
+}
+
+/* --- Post Reading View (Article Details) --- */
+.post-header {
+  text-align: center;
+  max-width: var(--max-width-reading);
+  margin: 0 auto 3rem auto;
+}
+
+.post-title {
+  font-size: 2.75rem;
+  margin: 0.75rem 0 1.5rem 0;
+}
+
+@media (max-width: 600px) {
+  .post-title {
+    font-size: 2rem;
+  }
+}
+
+.post-meta {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.post-meta span {
+  font-weight: 700;
+  color: var(--brand-navy);
+}
+
+.post-body {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-main);
+  max-width: var(--max-width-reading);
+  margin: 0 auto;
+}
+
+.post-body table {
+  margin: 2.5rem auto;
+  border-collapse: collapse;
+  width: auto;
+  min-width: 80%;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+}
+
+.post-body th, .post-body td {
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  text-align: center;
+}
+
+.post-body th {
+  background-color: var(--bg-secondary);
+  font-weight: 700;
+  color: var(--brand-navy);
+}
+
+/* Premium styled images and figures in posts */
+.post-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2rem auto;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.post-body img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.post-figure {
+  margin: 2.5rem auto;
+  text-align: center;
+  max-width: 100%;
+}
+
+.post-figure img {
+  margin: 0 auto 0.75rem auto;
+}
+
+.post-figure figcaption {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+
+.post-body h2 {
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  color: var(--brand-navy);
+  margin: 4rem 0 1.5rem 0;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.post-body h3 {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  color: var(--brand-burgundy);
+  margin: 3rem 0 1.25rem 0;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.post-body p {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+/* Beautiful blockquotes for philosophical citations */
+.post-body blockquote {
+  border-left: 4px solid var(--brand-burgundy);
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  margin: 2rem 0;
+  color: var(--text-muted);
+  background-color: var(--bg-secondary);
+}
+
+.post-body ul, .post-body ol {
+  margin: 1.5rem 0 1.5rem 2rem;
+}
+
+.post-body li {
+  margin-bottom: 0.5rem;
+}
+
+.back-to-home {
+  display: block;
+  text-align: center;
+  margin: 4rem auto 1rem auto;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--brand-burgundy);
+  font-weight: 700;
+  width: max-content;
+}
+
+.back-to-home:hover {
+  color: var(--brand-navy);
+}
+
+/* About Page Styles */
+.about-container {
+  max-width: var(--max-width-reading);
+  margin: 0 auto;
+  line-height: 1.8;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+}
+
+.about-header-title {
+  font-size: 2.75rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.about-section {
+  margin-bottom: 2.5rem;
+}
+
+.about-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--brand-navy);
+}
+
+/* Utility classes */
+.italic {
+  font-style: italic;
+}
+
+.text-center {
+  text-align: center;
+}
