@@ -18,11 +18,11 @@ export async function generateMetadata({ params }: Props) {
   const post = posts.find((p) => p.slug === slug);
   if (!post) {
     return {
-      title: "글을 찾을 수 없습니다 | 보수주의자의 정원",
+      title: "글을 찾을 수 없습니다 | 헤론의 정원",
     };
   }
   return {
-    title: `${post.title} | 보수주의자의 정원`,
+    title: `${post.title} | 헤론의 정원`,
     description: post.description || `${post.author}의 ${post.category} 에세이.`,
   };
 }

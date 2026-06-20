@@ -22,8 +22,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "보수주의자의 정원 | 보수주의자들을 위한 휴식처",
-  description: "보수주의자를 위한 개인 블로그이자 조용한 사색의 공간. 질서, 전통, 그리고 깊이 있는 생각을 나눕니다.",
+  title: "헤론의 정원 | 사색과 경험의 기록",
+  description: "사색과 경험의 기록을 나누는 조용한 사색의 공간. 철학, 심리학, 역사, 정치, 문화를 다룹니다.",
 };
 
 export default function RootLayout({
@@ -38,15 +38,16 @@ export default function RootLayout({
           <div className="container">
             <div className="logo-area">
               <Link href="/">
-                <h1 className="logo-title">보수주의자의 정원</h1>
+                <h1 className="logo-title">헤론의 정원</h1>
               </Link>
-              <p className="logo-sub">보수주의자들을 위한 휴식처</p>
+              <p className="logo-sub">사색과 경험의 기록</p>
             </div>
             <hr className="editorial-hr" />
             <nav className="site-nav">
               <Link href="/" className="nav-link">홈</Link>
               <Link href="/?category=Philosophy" className="nav-link">철학</Link>
-              <Link href="/?category=History" className="nav-link">역사</Link>
+              <Link href="/?category=Psychology" className="nav-link">심리학</Link>
+              <Link href="/?category=Politics" className="nav-link">정치</Link>
               <Link href="/?category=Culture" className="nav-link">문화</Link>
               <Link href="/?category=Lifestyle" className="nav-link">생활</Link>
               <Link href="/about" className="nav-link">블로그 소개</Link>
@@ -68,10 +69,10 @@ export default function RootLayout({
               <Link href="/about">블로그 소개</Link>
             </nav>
             <p className="copyright">
-              © {new Date().getFullYear()} 보수주의자의 정원. All rights reserved.
+              © {new Date().getFullYear()} 헤론의 정원. All rights reserved.
             </p>
             <p className="footer-motto" style={{ marginTop: '0.5rem', fontSize: '0.8rem' }}>
-              “보수주의자들을 위한 휴식처.”
+              “사색과 경험의 기록.”
             </p>
           </div>
         </footer>
