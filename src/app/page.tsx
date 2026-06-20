@@ -12,6 +12,8 @@ type Props = {
 
 const categoryMap: { [key: string]: string } = {
   philosophy: "철학",
+  psychology: "심리학",
+  politics: "정치",
   history: "역사",
   culture: "문화",
   lifestyle: "생활",
