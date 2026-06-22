@@ -2,6 +2,8 @@ import { posts } from "content";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import MdxContent from "@/components/mdx-content";
+import fs from "fs";
+import path from "path";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -42,8 +44,49 @@ export default async function PostPage({ params }: Props) {
     day: "numeric",
   });
 
+  // JSON-LD Structured Data for Google Blog/Article Recognition
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://heron-conserv.vercel.app";
+  const coverExists = fs.existsSync(
+    path.join(process.cwd(), "public", "images", `${post.slug}.webp`)
+  );
+  const imageUrl = coverExists ? `${siteUrl}/images/${post.slug}.webp` : undefined;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/posts/${post.slug}`,
+    },
+    "headline": post.title,
+    "description": post.description || `${post.author}의 ${post.category} 에세이.`,
+    "image": imageUrl ? [imageUrl] : undefined,
+    "datePublished": new Date(post.date).toISOString(),
+    "dateModified": new Date(post.date).toISOString(),
+    "author": {
+      "@type": "Person",
+      "name": post.author,
+      "url": `${siteUrl}/about`,
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "헤론의 정원",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/favicon.ico`,
+      },
+    },
+  };
+
   return (
     <article className="post-container">
+      {/* Inject JSON-LD Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <header className="post-header">
         <span className="category-tag">{post.category}</span>
         <h1 className="post-title">{post.title}</h1>
