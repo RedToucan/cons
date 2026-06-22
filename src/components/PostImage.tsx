@@ -8,9 +8,10 @@ interface PostImageProps {
   caption?: string;
   width?: number;
   height?: number;
+  priority?: boolean;
 }
 
-export default function PostImage({ src, alt, caption, width = 1200, height = 800 }: PostImageProps) {
+export default function PostImage({ src, alt, caption, width = 1200, height = 800, priority = false }: PostImageProps) {
   return (
     <figure className="post-figure">
       <Image
@@ -19,6 +20,7 @@ export default function PostImage({ src, alt, caption, width = 1200, height = 80
         width={width}
         height={height}
         sizes="(max-width: 768px) 100vw, 680px"
+        priority={priority}
         style={{
           width: '100%',
           height: 'auto',
