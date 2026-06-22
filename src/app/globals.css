@@ -258,9 +258,10 @@ a:hover {
 }
 
 .excerpt {
-  font-family: var(--font-serif);
+  font-family: var(--font-serif-body);
+  font-style: italic;
   font-size: 1.15rem;
-  color: var(--text-main);
+  color: var(--brand-burgundy);
   line-height: 1.7;
   margin-bottom: 1.5rem;
 }
