@@ -1,12 +1,15 @@
 import * as runtime from 'react/jsx-runtime';
 import PostImage from './PostImage';
 import RelatedPosts from './RelatedPosts';
+import YouTube from './YouTube';
 
 // Map custom React components that can be used directly inside MDX content
 const components = {
   PostImage,
   RelatedPosts,
+  YouTube,
 };
+
 
 interface MdxContentProps {
   code: string;
