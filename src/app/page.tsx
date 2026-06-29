@@ -27,12 +27,17 @@ export default async function Home({ searchParams }: Props) {
   const sortedPosts = [...posts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   ).map((post) => {
-    const hasCover = fs.existsSync(
-      path.join(process.cwd(), "public", "images", `${post.slug}.webp`)
-    );
+    let cover: string | undefined = undefined;
+    const extensions = ["webp", "png", "jpg", "jpeg"];
+    for (const ext of extensions) {
+      if (fs.existsSync(path.join(process.cwd(), "public", "images", `${post.slug}.${ext}`))) {
+        cover = `/images/${post.slug}.${ext}`;
+        break;
+      }
+    }
     return {
       ...post,
-      cover: hasCover ? `/images/${post.slug}.webp` : undefined,
+      cover,
     };
   });
 

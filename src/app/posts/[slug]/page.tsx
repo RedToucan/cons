@@ -46,10 +46,14 @@ export default async function PostPage({ params }: Props) {
 
   // JSON-LD Structured Data for Google Blog/Article Recognition
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://heron-conserv.vercel.app";
-  const coverExists = fs.existsSync(
-    path.join(process.cwd(), "public", "images", `${post.slug}.webp`)
-  );
-  const imageUrl = coverExists ? `${siteUrl}/images/${post.slug}.webp` : undefined;
+  let imageUrl: string | undefined = undefined;
+  const extensions = ["webp", "png", "jpg", "jpeg"];
+  for (const ext of extensions) {
+    if (fs.existsSync(path.join(process.cwd(), "public", "images", `${post.slug}.${ext}`))) {
+      imageUrl = `${siteUrl}/images/${post.slug}.${ext}`;
+      break;
+    }
+  }
 
   const jsonLd = {
     "@context": "https://schema.org",
