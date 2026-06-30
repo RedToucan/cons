@@ -51,6 +51,7 @@ export default function RootLayout({
               <Link href="/?category=Politics" className="nav-link">정치</Link>
               <Link href="/?category=Culture" className="nav-link">문화</Link>
               <Link href="/?category=Lifestyle" className="nav-link">생활</Link>
+              <Link href="/?category=Influencer" className="nav-link">인물 비평</Link>
               <Link href="/about" className="nav-link">블로그 소개</Link>
             </nav>
             <hr className="editorial-hr" style={{ marginTop: '0.75rem', marginBottom: '0' }} />
