@@ -3,8 +3,8 @@ import Link from "next/link";
 import MdxContent from "@/components/mdx-content";
 
 export const metadata = {
-  title: "블로그 소개 | 헤론의 정원",
-  description: "헤론의 정원 블로그의 개설 취지와 가치관에 대한 소개글입니다.",
+  title: "블로그 소개 | argos's notes",
+  description: "argos's notes 블로그의 개설 취지와 가치관에 대한 소개글입니다.",
 };
 
 export default function AboutPage() {
