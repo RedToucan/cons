@@ -20,9 +20,19 @@ const categoryMap: { [key: string]: string } = {
   influencer: "인물 비평",
 };
 
+const subcategoryMap: { [key: string]: string } = {
+  marriage: "결혼",
+  money: "돈/자산",
+  babrastraisand: "바브라 스트라이샌드",
+  soros: "조지 소로스",
+  pelosi: "낸시 펠로시",
+};
+
 export default async function Home({ searchParams }: Props) {
   const resolvedSearchParams = await searchParams;
   const categoryFilter = typeof resolvedSearchParams.category === "string" ? resolvedSearchParams.category : undefined;
+  const subcategoryFilter = typeof resolvedSearchParams.subcategory === "string" ? resolvedSearchParams.subcategory : undefined;
+  const tagFilter = typeof resolvedSearchParams.tag === "string" ? resolvedSearchParams.tag : undefined;
 
   // Sort posts by date descending and check for cover images
   const sortedPosts = [...posts].sort(
@@ -42,20 +52,43 @@ export default async function Home({ searchParams }: Props) {
     };
   });
 
-  // Filter posts if category filter is specified
-  const filteredPosts = categoryFilter
+  // Filter posts based on query params
+  let filteredPosts = sortedPosts;
+
+  if (categoryFilter) {
+    filteredPosts = filteredPosts.filter((p) => p.category.toLowerCase() === categoryFilter.toLowerCase());
+  }
+
+  if (subcategoryFilter) {
+    filteredPosts = filteredPosts.filter((p) => p.subcategory && p.subcategory.toLowerCase() === subcategoryFilter.toLowerCase());
+  }
+
+  if (tagFilter) {
+    filteredPosts = filteredPosts.filter((p) => p.tags && p.tags.some(t => t.toLowerCase() === tagFilter.toLowerCase()));
+  }
+
+  // Extract unique subcategories for the active category
+  const activeCategoryPosts = categoryFilter
     ? sortedPosts.filter((p) => p.category.toLowerCase() === categoryFilter.toLowerCase())
-    : sortedPosts;
+    : [];
+
+  const availableSubcategories = activeCategoryPosts.reduce<string[]>((acc, post) => {
+    if (post.subcategory && !acc.includes(post.subcategory.toLowerCase())) {
+      acc.push(post.subcategory.toLowerCase());
+    }
+    return acc;
+  }, []);
 
   const categoryDisplayName = categoryFilter
     ? (categoryMap[categoryFilter.toLowerCase()] || categoryFilter)
     : undefined;
 
   if (filteredPosts.length === 0) {
+    const filterText = tagFilter ? `#${tagFilter}` : (categoryDisplayName || "선택된");
     return (
       <div style={{ textAlign: "center", padding: "4rem 0" }}>
         <h2 className="grid-section-title" style={{ borderBottom: "none" }}>등록된 글이 없습니다</h2>
-        <p>현재 "{categoryDisplayName}" 카테고리에 작성된 에세이가 없습니다.</p>
+        <p>현재 "{filterText}" 필터에 부합하는 에세이가 없습니다.</p>
         <Link href="/" className="back-to-home" style={{ marginTop: "2rem" }}>
           ← 첫 화면으로 돌아가기
         </Link>
@@ -78,11 +111,44 @@ export default async function Home({ searchParams }: Props) {
 
   return (
     <div>
-      {/* Category Section Title if filtering */}
-      {categoryFilter && (
-        <h2 className="grid-section-title">
-          카테고리: {categoryDisplayName}
-        </h2>
+      {/* Category or Tag Section Title */}
+      {(categoryFilter || tagFilter) && (
+        <div className="filter-header" style={{ marginBottom: "2rem", borderBottom: "2px solid var(--border-color)", paddingBottom: "1.5rem" }}>
+          <h2 className="grid-section-title" style={{ borderBottom: "none", marginBottom: "0.5rem", paddingBottom: 0 }}>
+            {tagFilter ? `태그: #${tagFilter}` : `카테고리: ${categoryDisplayName}`}
+            {subcategoryFilter && ` > ${subcategoryMap[subcategoryFilter.toLowerCase()] || subcategoryFilter}`}
+          </h2>
+          {(tagFilter || subcategoryFilter) && (
+            <Link href="/" className="back-to-home" style={{ fontSize: "0.9rem", display: "inline-block", marginTop: "0.5rem" }}>
+              ← 전체 글 보기
+            </Link>
+          )}
+        </div>
+      )}
+
+      {/* Subcategory Tabs */}
+      {categoryFilter && availableSubcategories.length > 0 && (
+        <div className="subcategory-tabs">
+          <Link 
+            href={`/?category=${categoryFilter}`} 
+            className={`subcategory-tab ${!subcategoryFilter ? 'active' : ''}`}
+          >
+            전체
+          </Link>
+          {availableSubcategories.map((sub) => {
+            const isActive = subcategoryFilter?.toLowerCase() === sub;
+            const displayName = subcategoryMap[sub] || sub;
+            return (
+              <Link 
+                key={sub}
+                href={`/?category=${categoryFilter}&subcategory=${sub}`}
+                className={`subcategory-tab ${isActive ? 'active' : ''}`}
+              >
+                {displayName}
+              </Link>
+            );
+          })}
+        </div>
       )}
 
       {/* Featured Hero Article */}
@@ -101,7 +167,10 @@ export default async function Home({ searchParams }: Props) {
             </div>
           )}
           <div className="featured-content" style={featuredPost.cover ? {} : { gridColumn: "1 / -1" }}>
-            <span className="category-tag">{categoryMap[featuredPost.category.toLowerCase()] || featuredPost.category}</span>
+            <span className="category-tag">
+              {categoryMap[featuredPost.category.toLowerCase()] || featuredPost.category}
+              {featuredPost.subcategory && ` > ${subcategoryMap[featuredPost.subcategory.toLowerCase()] || featuredPost.subcategory}`}
+            </span>
             <h2 className="featured-title">
               <Link href={`/posts/${featuredPost.slug}`}>
                 {featuredPost.title}
@@ -116,6 +185,15 @@ export default async function Home({ searchParams }: Props) {
             </div>
             {featuredPost.description && (
               <p className="excerpt">{featuredPost.description}</p>
+            )}
+            {featuredPost.tags && featuredPost.tags.length > 0 && (
+              <div className="tag-list" style={{ marginBottom: "1.25rem" }}>
+                {featuredPost.tags.map(tag => (
+                  <Link key={tag} href={`/?tag=${tag}`} className="tag-badge">
+                    #{tag}
+                  </Link>
+                ))}
+              </div>
             )}
             <Link href={`/posts/${featuredPost.slug}`} className="read-more-btn">
               에세이 읽기
@@ -140,7 +218,10 @@ export default async function Home({ searchParams }: Props) {
             </div>
           )}
           <div className="featured-content" style={featuredPost.cover ? {} : { gridColumn: "1 / -1" }}>
-            <span className="category-tag">{categoryMap[featuredPost.category.toLowerCase()] || featuredPost.category}</span>
+            <span className="category-tag">
+              {categoryMap[featuredPost.category.toLowerCase()] || featuredPost.category}
+              {featuredPost.subcategory && ` > ${subcategoryMap[featuredPost.subcategory.toLowerCase()] || featuredPost.subcategory}`}
+            </span>
             <h2 className="featured-title">
               <Link href={`/posts/${featuredPost.slug}`}>
                 {featuredPost.title}
@@ -155,6 +236,15 @@ export default async function Home({ searchParams }: Props) {
             </div>
             {featuredPost.description && (
               <p className="excerpt">{featuredPost.description}</p>
+            )}
+            {featuredPost.tags && featuredPost.tags.length > 0 && (
+              <div className="tag-list" style={{ marginBottom: "1.25rem" }}>
+                {featuredPost.tags.map(tag => (
+                  <Link key={tag} href={`/?tag=${tag}`} className="tag-badge">
+                    #{tag}
+                  </Link>
+                ))}
+              </div>
             )}
             <Link href={`/posts/${featuredPost.slug}`} className="read-more-btn">
               에세이 읽기
@@ -184,7 +274,10 @@ export default async function Home({ searchParams }: Props) {
                   </div>
                 )}
                 <div className="article-card-content">
-                  <span className="category-tag">{categoryMap[post.category.toLowerCase()] || post.category}</span>
+                  <span className="category-tag">
+                    {categoryMap[post.category.toLowerCase()] || post.category}
+                    {post.subcategory && ` > ${subcategoryMap[post.subcategory.toLowerCase()] || post.subcategory}`}
+                  </span>
                   <h4 className="card-title">
                     <Link href={`/posts/${post.slug}`}>
                       {post.title}
@@ -196,6 +289,15 @@ export default async function Home({ searchParams }: Props) {
                   </div>
                   {post.description && (
                     <p className="card-excerpt">{post.description}</p>
+                  )}
+                  {post.tags && post.tags.length > 0 && (
+                    <div className="tag-list" style={{ marginBottom: "1rem" }}>
+                      {post.tags.map(tag => (
+                        <Link key={tag} href={`/?tag=${tag}`} className="tag-badge">
+                          #{tag}
+                        </Link>
+                      ))}
+                    </div>
                   )}
                   <Link href={`/posts/${post.slug}`} className="read-more-btn" style={{ fontSize: "0.9rem", alignSelf: "flex-start" }}>
                     에세이 읽기
