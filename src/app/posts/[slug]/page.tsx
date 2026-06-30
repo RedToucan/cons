@@ -20,11 +20,11 @@ export async function generateMetadata({ params }: Props) {
   const post = posts.find((p) => p.slug === slug);
   if (!post) {
     return {
-      title: "글을 찾을 수 없습니다 | argos's notes",
+      title: "글을 찾을 수 없습니다 | 아르고스의 노트",
     };
   }
   return {
-    title: `${post.title} | argos's notes`,
+    title: `${post.title} | 아르고스의 노트`,
     description: post.description || `${post.author}의 ${post.category} 에세이.`,
   };
 }
@@ -74,7 +74,7 @@ export default async function PostPage({ params }: Props) {
     },
     "publisher": {
       "@type": "Organization",
-      "name": "argos's notes",
+      "name": "아르고스의 노트",
       "logo": {
         "@type": "ImageObject",
         "url": `${siteUrl}/favicon.ico`,
