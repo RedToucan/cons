@@ -20,11 +20,11 @@ export async function generateMetadata({ params }: Props) {
   const post = posts.find((p) => p.slug === slug);
   if (!post) {
     return {
-      title: "글을 찾을 수 없습니다 | 헤론의 정원",
+      title: "글을 찾을 수 없습니다 | argos's notes",
     };
   }
   return {
-    title: `${post.title} | 헤론의 정원`,
+    title: `${post.title} | argos's notes`,
     description: post.description || `${post.author}의 ${post.category} 에세이.`,
   };
 }
@@ -74,7 +74,7 @@ export default async function PostPage({ params }: Props) {
     },
     "publisher": {
       "@type": "Organization",
-      "name": "헤론의 정원",
+      "name": "argos's notes",
       "logo": {
         "@type": "ImageObject",
         "url": `${siteUrl}/favicon.ico`,
