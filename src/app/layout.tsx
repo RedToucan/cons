@@ -23,7 +23,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "argos's notes | 사색과 경험의 기록",
+  title: "아르고스의 노트 | 사색과 경험의 기록",
   description: "사색과 경험의 기록을 나누는 조용한 사색의 공간. 철학, 심리학, 역사, 정치, 문화를 다룹니다.",
 };
 
@@ -39,7 +39,7 @@ export default function RootLayout({
           <div className="container">
             <div className="logo-area">
               <Link href="/">
-                <h1 className="logo-title">argos's notes</h1>
+                <h1 className="logo-title">아르고스의 노트</h1>
               </Link>
               <p className="logo-sub">사색과 경험의 기록</p>
             </div>
@@ -70,7 +70,7 @@ export default function RootLayout({
               <Link href="/about">블로그 소개</Link>
             </nav>
             <p className="copyright">
-              © {new Date().getFullYear()} argos's notes. All rights reserved.
+              © {new Date().getFullYear()} 아르고스의 노트. All rights reserved.
             </p>
             <p className="footer-motto" style={{ marginTop: '0.5rem', fontSize: '0.8rem' }}>
               “사색과 경험의 기록.”
