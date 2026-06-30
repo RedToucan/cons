@@ -573,3 +573,68 @@ a:hover {
 .text-center {
   text-align: center;
 }
+
+/* Subcategory & Tag UI Styles */
+.subcategory-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.subcategory-tab {
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  font-family: var(--font-sans);
+  transition: all var(--transition-smooth);
+}
+
+.subcategory-tab:hover {
+  color: var(--text-main);
+  border-color: var(--text-muted);
+  opacity: 1;
+}
+
+.subcategory-tab.active {
+  background-color: var(--brand-navy);
+  color: var(--bg-primary);
+  border-color: var(--brand-navy);
+}
+
+.subcategory-tab.active:hover {
+  opacity: 0.9;
+}
+
+/* Tag list and Tag bubbles */
+.tag-list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.tag-badge {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background-color: var(--bg-secondary);
+  color: var(--brand-burgundy);
+  border: 1px solid var(--border-color);
+  font-family: var(--font-sans);
+  transition: all var(--transition-smooth);
+}
+
+.tag-badge:hover {
+  background-color: var(--brand-burgundy);
+  color: var(--bg-primary);
+  border-color: var(--brand-burgundy);
+  opacity: 1;
+}
+

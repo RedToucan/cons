@@ -19,6 +19,8 @@ export default defineConfig({
         date: s.isodate(),
         description: s.string().optional(),
         category: s.string().default('Philosophy'),
+        tags: s.array(s.string()).default([]),
+        subcategory: s.string().optional(),
         author: s.string().default('Editorial'),
         // markdown() parses md to html, metadata() gets reading time, word count etc.
         content: s.mdx(),
@@ -36,9 +38,18 @@ export default defineConfig({
           }
           finalSlug = nameParts.join('.');
         }
+
+        // Extract subcategory from path if not explicitly provided
+        const parts = data.path.split(/[/\\]/);
+        let finalSubcategory = data.subcategory;
+        if (!finalSubcategory && parts.length >= 4) {
+          finalSubcategory = parts[2];
+        }
+
         return {
           ...data,
           slug: finalSlug,
+          subcategory: finalSubcategory,
           permalink: `/posts/${finalSlug}`
         };
       })

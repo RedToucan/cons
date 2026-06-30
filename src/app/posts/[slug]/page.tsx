@@ -5,6 +5,24 @@ import MdxContent from "@/components/mdx-content";
 import fs from "fs";
 import path from "path";
 
+const categoryMap: { [key: string]: string } = {
+  philosophy: "철학",
+  psychology: "심리학",
+  politics: "정치",
+  history: "역사",
+  culture: "문화",
+  lifestyle: "생활",
+  influencer: "인물 비평",
+};
+
+const subcategoryMap: { [key: string]: string } = {
+  marriage: "결혼",
+  money: "돈/자산",
+  babrastraisand: "바브라 스트라이샌드",
+  soros: "조지 소로스",
+  pelosi: "낸시 펠로시",
+};
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -92,7 +110,10 @@ export default async function PostPage({ params }: Props) {
         }}
       />
       <header className="post-header">
-        <span className="category-tag">{post.category}</span>
+        <span className="category-tag">
+          {categoryMap[post.category.toLowerCase()] || post.category}
+          {post.subcategory && ` > ${subcategoryMap[post.subcategory.toLowerCase()] || post.subcategory}`}
+        </span>
         <h1 className="post-title">{post.title}</h1>
         <div className="post-meta">
           글쓴이: <span>{post.author}</span> — 발행일: {formattedDate}
@@ -113,6 +134,19 @@ export default async function PostPage({ params }: Props) {
       <div className="post-body">
         <MdxContent code={post.content} />
       </div>
+
+      {post.tags && post.tags.length > 0 && (
+        <div style={{ marginTop: "3rem", borderTop: "1px solid var(--border-color)", paddingTop: "1.5rem" }}>
+          <span style={{ fontSize: "0.85rem", color: "var(--text-muted)", display: "block", marginBottom: "0.5rem" }}>관련 태그:</span>
+          <div className="tag-list">
+            {post.tags.map(tag => (
+              <Link key={tag} href={`/?tag=${tag}`} className="tag-badge">
+                #{tag}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       <Link href="/" className="back-to-home">
         ← 정원 첫 화면으로 돌아가기
