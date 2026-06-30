@@ -26,6 +26,7 @@ const subcategoryMap: { [key: string]: string } = {
   babrastraisand: "바브라 스트라이샌드",
   soros: "조지 소로스",
   pelosi: "낸시 펠로시",
+  elainechao: "일레인 차오",
 };
 
 export default async function Home({ searchParams }: Props) {
