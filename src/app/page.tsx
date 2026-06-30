@@ -17,6 +17,7 @@ const categoryMap: { [key: string]: string } = {
   history: "역사",
   culture: "문화",
   lifestyle: "생활",
+  influencer: "인물 비평",
 };
 
 export default async function Home({ searchParams }: Props) {
