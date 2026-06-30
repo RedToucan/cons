@@ -22,6 +22,7 @@ const subcategoryMap: { [key: string]: string } = {
   soros: "조지 소로스",
   pelosi: "낸시 펠로시",
   elainechao: "일레인 차오",
+  angelachao: "앤절라 차오",
 };
 
 type Props = {
