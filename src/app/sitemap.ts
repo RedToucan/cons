@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { posts } from "content";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://heron-conserv.vercel.app";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com";
 
   const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${siteUrl}/posts/${post.slug}`,

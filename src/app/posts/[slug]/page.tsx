@@ -68,7 +68,7 @@ export default async function PostPage({ params }: Props) {
   });
 
   // JSON-LD Structured Data for Google Blog/Article Recognition
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://heron-conserv.vercel.app";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com";
   let imageUrl: string | undefined = undefined;
   const extensions = ["webp", "png", "jpg", "jpeg"];
   for (const ext of extensions) {
