@@ -29,6 +29,8 @@ const subcategoryMap: { [key: string]: string } = {
   elainechao: "일레인 차오",
   angelachao: "앤절라 차오",
   mcconnell: "미치 매코널",
+  machinepolitics: "기계정치",
+  chomsky: "노암 촘스키",
 };
 
 export default async function Home({ searchParams }: Props) {
