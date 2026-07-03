@@ -23,8 +23,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "아르고스의 노트 | 사색과 경험의 기록",
-  description: "사색과 경험의 기록을 나누는 조용한 사색의 공간. 철학, 심리학, 역사, 정치, 문화를 다룹니다.",
+  title: "아르고스의 노트 | 심리학과, 경험주의로 읽는 세상",
+  description: "심리학과, 경험주의로 읽는 세상을 나누는 조용한 사색의 공간. 철학, 심리학, 역사, 정치, 문화를 다룹니다.",
 };
 
 export default function RootLayout({
@@ -41,7 +41,7 @@ export default function RootLayout({
               <Link href="/">
                 <h1 className="logo-title">아르고스의 노트</h1>
               </Link>
-              <p className="logo-sub">사색과 경험의 기록</p>
+              <p className="logo-sub">심리학과, 경험주의로 읽는 세상</p>
             </div>
             <hr className="editorial-hr" />
             <nav className="site-nav">
@@ -74,7 +74,7 @@ export default function RootLayout({
               © {new Date().getFullYear()} 아르고스의 노트. All rights reserved.
             </p>
             <p className="footer-motto" style={{ marginTop: '0.5rem', fontSize: '0.8rem' }}>
-              “사색과 경험의 기록.”
+              “심리학과, 경험주의로 읽는 세상.”
             </p>
           </div>
         </footer>
