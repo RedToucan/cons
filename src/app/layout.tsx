@@ -47,6 +47,7 @@ export default function RootLayout({
             <nav className="site-nav">
               <Link href="/" className="nav-link">홈</Link>
               <Link href="/?category=Philosophy" className="nav-link">철학</Link>
+              <Link href="/?category=Humanism" className="nav-link">인본주의</Link>
               <Link href="/?category=Psychology" className="nav-link">심리학</Link>
               <Link href="/?category=Politics" className="nav-link">정치</Link>
               <Link href="/?category=Culture" className="nav-link">문화</Link>
