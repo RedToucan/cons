@@ -24,7 +24,12 @@ const categoryMap: { [key: string]: string } = {
 const subcategoryMap: { [key: string]: string } = {
   marriage: "결혼",
   money: "돈/자산",
-  babrastraisand: "바브라 스트라이샌드",
+  anger: "분노",
+  charity: "자선",
+  drug: "마약",
+  happiness: "행복",
+  honest: "정직",
+  barbrastreisand: "바브라 스트라이샌드",
   soros: "조지 소로스",
   pelosi: "낸시 펠로시",
   elainechao: "일레인 차오",
