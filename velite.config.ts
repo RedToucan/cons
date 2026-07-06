@@ -59,7 +59,7 @@ export default defineConfig({
 
         const cleanContent = rawContent.replace(/---[\s\S]*?---/, '').trim();
         const charCount = cleanContent.length;
-        const koreanReadingTime = Math.max(1, Math.round(charCount / 500));
+        const koreanReadingTime = Math.max(1, Math.round(charCount / 1200));
 
         return {
           ...data,
