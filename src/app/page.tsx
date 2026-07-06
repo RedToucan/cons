@@ -37,7 +37,7 @@ const subcategoryMap: { [key: string]: string } = {
   mcconnell: "미치 매코널",
   machinepolitics: "기계정치",
   chomsky: "노암 촘스키",
-  ecology: "생태학",
+  psychology: "심리학",
 };
 
 export default async function Home({ searchParams }: Props) {
