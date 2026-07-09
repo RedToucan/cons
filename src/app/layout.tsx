@@ -53,6 +53,7 @@ export default function RootLayout({
               <Link href="/?category=Culture" className="nav-link">문화</Link>
               <Link href="/?category=Lifestyle" className="nav-link">생활</Link>
               <Link href="/?category=Influencer" className="nav-link">인물 비평</Link>
+              <Link href="/board" className="nav-link">자유게시판</Link>
               <Link href="/about" className="nav-link">블로그 소개</Link>
             </nav>
             <hr className="editorial-hr" style={{ marginTop: '0.75rem', marginBottom: '0' }} />
@@ -69,6 +70,7 @@ export default function RootLayout({
           <div className="container">
             <nav className="footer-nav">
               <Link href="/">홈</Link>
+              <Link href="/board">자유게시판</Link>
               <Link href="/about">블로그 소개</Link>
             </nav>
             <p className="copyright">
