@@ -34,3 +34,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## 자유게시판 관리자 설정 (Admin Settings for Free Board)
+
+자유게시판의 스팸이나 광고글 등을 관리자가 강제 삭제할 수 있도록 마스터 비밀번호 기능이 내장되어 있습니다.
+
+- **기본 관리자 마스터 비밀번호**: `admin1234`
+- **비밀번호 변경 방법**:
+  서버 환경 변수 `ADMIN_PASSWORD`에 원하는 비밀번호를 입력하고 서버를 실행하시면 해당 비밀번호가 마스터 비밀번호로 적용됩니다.
