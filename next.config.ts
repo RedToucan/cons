@@ -2,12 +2,25 @@ import type { NextConfig } from "next";
 import { build } from "velite";
 
 class VeliteWebpackPlugin {
-  static started = false;
+  static initialBuild?: Promise<unknown>;
+  static watchStarted = false;
+
   apply(compiler: any) {
-    if (VeliteWebpackPlugin.started) return;
-    VeliteWebpackPlugin.started = true;
     const isDev = compiler.options.mode === "development";
-    build({ watch: isDev, clean: !isDev });
+
+    compiler.hooks.beforeCompile.tapPromise("VeliteWebpackPlugin", async () => {
+      VeliteWebpackPlugin.initialBuild ??= build({
+        watch: false,
+        clean: !isDev,
+      });
+
+      await VeliteWebpackPlugin.initialBuild;
+
+      if (isDev && !VeliteWebpackPlugin.watchStarted) {
+        VeliteWebpackPlugin.watchStarted = true;
+        build({ watch: true, clean: false });
+      }
+    });
   }
 }
 
