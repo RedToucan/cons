@@ -95,10 +95,10 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 });
     }
 
-    const MASTER_PASSWORD = process.env.ADMIN_PASSWORD || 'admin1234';
+    const MASTER_PASSWORD = process.env.ADMIN_PASSWORD;
 
-    // Allow deletion if the password matches either the post's password OR the admin master password
-    if (posts[postIndex].password !== password && password !== MASTER_PASSWORD) {
+    // Allow deletion if the password matches either the post's password OR the admin master password (if configured)
+    if (posts[postIndex].password !== password && (!MASTER_PASSWORD || password !== MASTER_PASSWORD)) {
       return NextResponse.json({ error: 'Invalid password' }, { status: 403 });
     }
 

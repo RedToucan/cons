@@ -39,6 +39,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 자유게시판의 스팸이나 광고글 등을 관리자가 강제 삭제할 수 있도록 마스터 비밀번호 기능이 내장되어 있습니다.
 
-- **기본 관리자 마스터 비밀번호**: `admin1234`
-- **비밀번호 변경 방법**:
-  서버 환경 변수 `ADMIN_PASSWORD`에 원하는 비밀번호를 입력하고 서버를 실행하시면 해당 비밀번호가 마스터 비밀번호로 적용됩니다.
+- **설정 방법**:
+  배포 플랫폼(Vercel 등)이나 로컬 환경의 환경 변수(Environment Variables) 설정에 `ADMIN_PASSWORD`를 추가하고 원하시는 관리자 비밀번호를 지정해 주세요.
+  안전을 위해 기본값은 소스 코드에 저장되어 있지 않으며, 환경 변수가 정의되었을 때만 마스터 비밀번호가 활성화됩니다.
