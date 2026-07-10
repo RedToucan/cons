@@ -40,11 +40,30 @@ const subcategoryMap: { [key: string]: string } = {
   psychology: "심리학",
 };
 
+const IMPORTANT_SLUGS = [
+  "why-progressive-elites-dont-acknowledge-themselves-as-insiders",
+  "harris-and-garcetti-california-machine-politics",
+  "rousseau-confessions-and-deception-of-confession",
+  "why-nuclear-power-feels-dangerous",
+  "fox-sin-and-farmer-fire",
+  "frogs-and-stork-king",
+  "is-conservatism-an-independent-worldview",
+  "the-godfather-and-machine-politics",
+  "why-social-engineering-is-dangerous-intellectual-hubris-without-empiricism",
+  "willie-brown-and-san-francisco-machine-politics",
+  "elizabeth-warren-and-outsider-myth",
+  "eric-garcetti-and-la-style-progressive-politics",
+  "does-a-good-cause-make-people-good"
+];
+
 export default async function Home({ searchParams }: Props) {
   const resolvedSearchParams = await searchParams;
   const categoryFilter = typeof resolvedSearchParams.category === "string" ? resolvedSearchParams.category : undefined;
   const subcategoryFilter = typeof resolvedSearchParams.subcategory === "string" ? resolvedSearchParams.subcategory : undefined;
   const tagFilter = typeof resolvedSearchParams.tag === "string" ? resolvedSearchParams.tag : undefined;
+  const modeFilter = typeof resolvedSearchParams.mode === "string" ? resolvedSearchParams.mode : undefined;
+
+  const isDefaultHome = !categoryFilter && !tagFilter && !subcategoryFilter && modeFilter !== "all";
 
   // Sort posts by date descending and check for cover images
   const sortedPosts = [...posts].sort(
@@ -67,16 +86,24 @@ export default async function Home({ searchParams }: Props) {
   // Filter posts based on query params
   let filteredPosts = sortedPosts;
 
-  if (categoryFilter) {
-    filteredPosts = filteredPosts.filter((p) => p.category.toLowerCase() === categoryFilter.toLowerCase());
-  }
-
-  if (subcategoryFilter) {
-    filteredPosts = filteredPosts.filter((p) => p.subcategory && p.subcategory.toLowerCase() === subcategoryFilter.toLowerCase());
-  }
-
-  if (tagFilter) {
-    filteredPosts = filteredPosts.filter((p) => p.tags && p.tags.some(t => t.toLowerCase() === tagFilter.toLowerCase()));
+  if (isDefaultHome) {
+    // Keep only the curated list of important posts, sorted in the specified order
+    filteredPosts = sortedPosts.filter((p) => IMPORTANT_SLUGS.includes(p.slug));
+    filteredPosts.sort((a, b) => {
+      const idxA = IMPORTANT_SLUGS.indexOf(a.slug);
+      const idxB = IMPORTANT_SLUGS.indexOf(b.slug);
+      return idxA - idxB;
+    });
+  } else {
+    if (categoryFilter) {
+      filteredPosts = filteredPosts.filter((p) => p.category.toLowerCase() === categoryFilter.toLowerCase());
+    }
+    if (subcategoryFilter) {
+      filteredPosts = filteredPosts.filter((p) => p.subcategory && p.subcategory.toLowerCase() === subcategoryFilter.toLowerCase());
+    }
+    if (tagFilter) {
+      filteredPosts = filteredPosts.filter((p) => p.tags && p.tags.some(t => t.toLowerCase() === tagFilter.toLowerCase()));
+    }
   }
 
   // Extract unique subcategories for the active category
@@ -123,6 +150,18 @@ export default async function Home({ searchParams }: Props) {
 
   return (
     <div>
+      {/* All Posts Section Title */}
+      {modeFilter === "all" && !categoryFilter && !tagFilter && (
+        <div className="filter-header" style={{ marginBottom: "2rem", borderBottom: "2px solid var(--border-color)", paddingBottom: "1.5rem" }}>
+          <h2 className="grid-section-title" style={{ borderBottom: "none", marginBottom: "0.5rem", paddingBottom: 0 }}>
+            전체 사색 아카이브
+          </h2>
+          <Link href="/" className="back-to-home" style={{ fontSize: "0.9rem", display: "inline-block", marginTop: "0.5rem" }}>
+            ← 주요 에세이 목록으로 돌아가기
+          </Link>
+        </div>
+      )}
+
       {/* Category or Tag Section Title */}
       {(categoryFilter || tagFilter) && (
         <div className="filter-header" style={{ marginBottom: "2rem", borderBottom: "2px solid var(--border-color)", paddingBottom: "1.5rem" }}>
@@ -269,7 +308,7 @@ export default async function Home({ searchParams }: Props) {
       {gridPosts.length > 0 && (
         <section style={{ marginTop: "2rem" }}>
           <h3 className="grid-section-title">
-            {categoryFilter ? "이 카테고리의 다른 사색" : "최근 등록된 사색"}
+            {categoryFilter ? "이 카테고리의 다른 사색" : (isDefaultHome ? "주요 사색" : "전체 사색 아카이브")}
           </h3>
           <div className="article-grid">
             {gridPosts.map((post) => (
@@ -319,6 +358,50 @@ export default async function Home({ searchParams }: Props) {
             ))}
           </div>
         </section>
+      )}
+
+      {/* Explore All Posts Banner on Default Home */}
+      {isDefaultHome && (
+        <div style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "3.5rem 2rem",
+          margin: "3rem 0 5rem 0",
+          backgroundColor: "var(--bg-secondary)",
+          border: "1px dashed var(--border-color)",
+          borderRadius: "8px",
+          textAlign: "center"
+        }}>
+          <h4 style={{
+            fontFamily: "var(--font-serif)",
+            fontSize: "1.5rem",
+            color: "var(--brand-navy)",
+            marginBottom: "1rem"
+          }}>
+            보수주의자의 정원 서재 전체 탐색하기
+          </h4>
+          <p style={{
+            color: "var(--text-muted)",
+            fontSize: "0.95rem",
+            maxWidth: "600px",
+            marginBottom: "2rem",
+            lineHeight: "1.7"
+          }}>
+            철학, 심리학, 인물 비평, 문화 분석 등 정원사 헤론이 기록해 온 총 {sortedPosts.length}편의 모든 사색 에세이를 연대기 순으로 만나보실 수 있습니다.
+          </p>
+          <Link href="/?mode=all" className="read-more-btn" style={{
+            fontSize: "1.1rem",
+            padding: "0.25rem 0.5rem",
+            borderBottomWidth: "3px",
+            textTransform: "uppercase",
+            letterSpacing: "0.05em",
+            cursor: "pointer"
+          }}>
+            전체 글 아카이브 보기 ({sortedPosts.length}편) →
+          </Link>
+        </div>
       )}
     </div>
   );
