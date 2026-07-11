@@ -40,21 +40,6 @@ const subcategoryMap: { [key: string]: string } = {
   psychology: "심리학",
 };
 
-const IMPORTANT_SLUGS = [
-  "why-progressive-elites-dont-acknowledge-themselves-as-insiders",
-  "harris-and-garcetti-california-machine-politics",
-  "rousseau-confessions-and-deception-of-confession",
-  "why-nuclear-power-feels-dangerous",
-  "fox-sin-and-farmer-fire",
-  "frogs-and-stork-king",
-  "is-conservatism-an-independent-worldview",
-  "the-godfather-and-machine-politics",
-  "why-social-engineering-is-dangerous-intellectual-hubris-without-empiricism",
-  "willie-brown-and-san-francisco-machine-politics",
-  "elizabeth-warren-and-outsider-myth",
-  "eric-garcetti-and-la-style-progressive-politics",
-  "does-a-good-cause-make-people-good"
-];
 
 export default async function Home({ searchParams }: Props) {
   const resolvedSearchParams = await searchParams;
@@ -87,13 +72,19 @@ export default async function Home({ searchParams }: Props) {
   let filteredPosts = sortedPosts;
 
   if (isDefaultHome) {
-    // Keep only the curated list of important posts, sorted in the specified order
-    filteredPosts = sortedPosts.filter((p) => IMPORTANT_SLUGS.includes(p.slug));
-    filteredPosts.sort((a, b) => {
-      const idxA = IMPORTANT_SLUGS.indexOf(a.slug);
-      const idxB = IMPORTANT_SLUGS.indexOf(b.slug);
-      return idxA - idxB;
+    // Keep only the featured posts
+    const featuredList = sortedPosts.filter((p) => p.featured);
+
+    // Sort featured posts by order ascending
+    featuredList.sort((a, b) => {
+      if (a.order !== b.order) {
+        return a.order - b.order;
+      }
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
+
+    // Capped at 10 items for the featured curation
+    filteredPosts = featuredList.slice(0, 10);
   } else {
     if (categoryFilter) {
       filteredPosts = filteredPosts.filter((p) => p.category.toLowerCase() === categoryFilter.toLowerCase());
@@ -135,9 +126,9 @@ export default async function Home({ searchParams }: Props) {
     );
   }
 
-  // The first post of the list is featured
-  const featuredPost = filteredPosts[0];
-  const gridPosts = filteredPosts.slice(1);
+  // The first post of the list is featured (Only on default home curation)
+  const featuredPost = isDefaultHome ? filteredPosts[0] : undefined;
+  const gridPosts = isDefaultHome ? filteredPosts.slice(1) : filteredPosts;
 
   // Format date utility
   const formatDate = (dateString: string) => {
@@ -151,13 +142,38 @@ export default async function Home({ searchParams }: Props) {
   return (
     <div>
       {/* All Posts Section Title */}
-      {modeFilter === "all" && !categoryFilter && !tagFilter && (
-        <div className="filter-header" style={{ marginBottom: "2rem", borderBottom: "2px solid var(--border-color)", paddingBottom: "1.5rem" }}>
-          <h2 className="grid-section-title" style={{ borderBottom: "none", marginBottom: "0.5rem", paddingBottom: 0 }}>
-            전체 사색 아카이브
-          </h2>
-          <Link href="/" className="back-to-home" style={{ fontSize: "0.9rem", display: "inline-block", marginTop: "0.5rem" }}>
-            ← 주요 에세이 목록으로 돌아가기
+      {/* Archive Mode Switcher Tabs (Show under top navigation bar) */}
+      {!categoryFilter && !tagFilter && (
+        <div className="archive-mode-tabs" style={{ display: "flex", gap: "1.5rem", borderBottom: "1px solid var(--border-color)", paddingBottom: "0.75rem", marginBottom: "2rem", marginTop: "0.5rem" }}>
+          <Link 
+            href="/" 
+            className={`nav-link-tab ${isDefaultHome ? 'active' : ''}`}
+            style={{ 
+              fontFamily: "var(--font-serif)", 
+              fontSize: "1.1rem", 
+              paddingBottom: "0.75rem", 
+              borderBottom: isDefaultHome ? "2px solid var(--brand-navy)" : "none", 
+              color: isDefaultHome ? "var(--brand-navy)" : "var(--text-muted)",
+              fontWeight: isDefaultHome ? "bold" : "normal",
+              textDecoration: "none"
+            }}
+          >
+            추천 사색
+          </Link>
+          <Link 
+            href="/?mode=all" 
+            className={`nav-link-tab ${modeFilter === "all" ? 'active' : ''}`}
+            style={{ 
+              fontFamily: "var(--font-serif)", 
+              fontSize: "1.1rem", 
+              paddingBottom: "0.75rem", 
+              borderBottom: modeFilter === "all" ? "2px solid var(--brand-navy)" : "none", 
+              color: modeFilter === "all" ? "var(--brand-navy)" : "var(--text-muted)",
+              fontWeight: modeFilter === "all" ? "bold" : "normal",
+              textDecoration: "none"
+            }}
+          >
+            전체 사색 아카이브 ({sortedPosts.length}편)
           </Link>
         </div>
       )}
