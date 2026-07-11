@@ -22,6 +22,8 @@ export default defineConfig({
         description: s.string().optional(),
         category: s.string().default('Philosophy'),
         tags: s.array(s.string()).default([]),
+        featured: s.boolean().default(false),
+        order: s.number().default(0),
         subcategory: s.string().optional(),
         author: s.string().default('Editorial'),
         content: s.mdx(),
