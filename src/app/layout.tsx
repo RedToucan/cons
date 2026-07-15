@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Playfair_Display, Lora, Inter } from "next/font/google";
 import Link from "next/link";
+import SearchInput from "@/components/SearchInput";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -42,6 +43,7 @@ export default function RootLayout({
                 <h1 className="logo-title">아르고스의 노트</h1>
               </Link>
               <p className="logo-sub">심리학과, 경험주의로 읽는 세상</p>
+              <SearchInput />
             </div>
             <hr className="editorial-hr" />
             <nav className="site-nav">

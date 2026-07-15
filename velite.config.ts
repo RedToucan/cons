@@ -28,7 +28,8 @@ export default defineConfig({
         author: s.string().default('Editorial'),
         content: s.mdx(),
         metadata: s.metadata(),
-        path: s.path()
+        path: s.path(),
+        plainText: s.string().optional()
       })
       .transform((data) => {
         let finalSlug = data.slug;
@@ -68,6 +69,7 @@ export default defineConfig({
           slug: finalSlug,
           subcategory: finalSubcategory,
           permalink: `/posts/${finalSlug}`,
+          plainText: cleanContent,
           metadata: {
             ...data.metadata,
             readingTime: koreanReadingTime
