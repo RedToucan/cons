@@ -47,8 +47,9 @@ export default async function Home({ searchParams }: Props) {
   const subcategoryFilter = typeof resolvedSearchParams.subcategory === "string" ? resolvedSearchParams.subcategory : undefined;
   const tagFilter = typeof resolvedSearchParams.tag === "string" ? resolvedSearchParams.tag : undefined;
   const modeFilter = typeof resolvedSearchParams.mode === "string" ? resolvedSearchParams.mode : undefined;
+  const searchFilter = typeof resolvedSearchParams.q === "string" ? resolvedSearchParams.q : undefined;
 
-  const isDefaultHome = !categoryFilter && !tagFilter && !subcategoryFilter && modeFilter !== "all";
+  const isDefaultHome = !categoryFilter && !tagFilter && !subcategoryFilter && !searchFilter && modeFilter !== "all";
 
   // Sort posts by date descending and check for cover images
   const sortedPosts = [...posts].sort(
@@ -95,6 +96,19 @@ export default async function Home({ searchParams }: Props) {
     if (tagFilter) {
       filteredPosts = filteredPosts.filter((p) => p.tags && p.tags.some(t => t.toLowerCase() === tagFilter.toLowerCase()));
     }
+    if (searchFilter) {
+      const query = searchFilter.toLowerCase().trim();
+      filteredPosts = filteredPosts.filter((p) => {
+        const matchesTitle = p.title.toLowerCase().includes(query);
+        const matchesDesc = p.description ? p.description.toLowerCase().includes(query) : false;
+        const matchesCategory = p.category.toLowerCase().includes(query);
+        const matchesSubcategory = p.subcategory ? p.subcategory.toLowerCase().includes(query) : false;
+        const matchesTags = p.tags ? p.tags.some(t => t.toLowerCase().includes(query)) : false;
+        const matchesContent = p.plainText ? p.plainText.toLowerCase().includes(query) : false;
+        
+        return matchesTitle || matchesDesc || matchesCategory || matchesSubcategory || matchesTags || matchesContent;
+      });
+    }
   }
 
   // Extract unique subcategories for the active category
@@ -114,11 +128,13 @@ export default async function Home({ searchParams }: Props) {
     : undefined;
 
   if (filteredPosts.length === 0) {
-    const filterText = tagFilter ? `#${tagFilter}` : (categoryDisplayName || "선택된");
+    const filterText = searchFilter 
+      ? `검색어: "${searchFilter}"` 
+      : (tagFilter ? `#${tagFilter}` : (categoryDisplayName || "선택된"));
     return (
       <div style={{ textAlign: "center", padding: "4rem 0" }}>
         <h2 className="grid-section-title" style={{ borderBottom: "none" }}>등록된 글이 없습니다</h2>
-        <p>현재 "{filterText}" 필터에 부합하는 에세이가 없습니다.</p>
+        <p>현재 {filterText}에 부합하는 에세이가 없습니다.</p>
         <Link href="/" className="back-to-home" style={{ marginTop: "2rem" }}>
           ← 첫 화면으로 돌아가기
         </Link>
@@ -143,7 +159,7 @@ export default async function Home({ searchParams }: Props) {
     <div>
       {/* All Posts Section Title */}
       {/* Archive Mode Switcher Tabs (Show under top navigation bar) */}
-      {!categoryFilter && !tagFilter && (
+      {!categoryFilter && !tagFilter && !searchFilter && (
         <div className="archive-mode-tabs" style={{ display: "flex", gap: "1.5rem", borderBottom: "1px solid var(--border-color)", paddingBottom: "0.75rem", marginBottom: "2rem", marginTop: "0.5rem" }}>
           <Link 
             href="/" 
@@ -178,14 +194,15 @@ export default async function Home({ searchParams }: Props) {
         </div>
       )}
 
-      {/* Category or Tag Section Title */}
-      {(categoryFilter || tagFilter) && (
+      {/* Category, Tag or Search Section Title */}
+      {(categoryFilter || tagFilter || searchFilter) && (
         <div className="filter-header" style={{ marginBottom: "2rem", borderBottom: "2px solid var(--border-color)", paddingBottom: "1.5rem" }}>
           <h2 className="grid-section-title" style={{ borderBottom: "none", marginBottom: "0.5rem", paddingBottom: 0 }}>
-            {tagFilter ? `태그: #${tagFilter}` : `카테고리: ${categoryDisplayName}`}
+            {searchFilter ? `검색 결과: "${searchFilter}"` : (tagFilter ? `태그: #${tagFilter}` : `카테고리: ${categoryDisplayName}`)}
             {subcategoryFilter && ` > ${subcategoryMap[subcategoryFilter.toLowerCase()] || subcategoryFilter}`}
+            {searchFilter && <span style={{ fontSize: "1.1rem", fontWeight: "normal", color: "var(--text-muted)", marginLeft: "0.75rem" }}>({filteredPosts.length}편)</span>}
           </h2>
-          {(tagFilter || subcategoryFilter) && (
+          {(tagFilter || subcategoryFilter || searchFilter) && (
             <Link href="/" className="back-to-home" style={{ fontSize: "0.9rem", display: "inline-block", marginTop: "0.5rem" }}>
               ← 전체 글 보기
             </Link>
@@ -324,7 +341,9 @@ export default async function Home({ searchParams }: Props) {
       {gridPosts.length > 0 && (
         <section style={{ marginTop: "2rem" }}>
           <h3 className="grid-section-title">
-            {categoryFilter ? "이 카테고리의 다른 사색" : (isDefaultHome ? "주요 사색" : "전체 사색 아카이브")}
+            {searchFilter 
+              ? "검색 결과 에세이"
+              : (categoryFilter ? "이 카테고리의 다른 사색" : (isDefaultHome ? "주요 사색" : "전체 사색 아카이브"))}
           </h3>
           <div className="article-grid">
             {gridPosts.map((post) => (
