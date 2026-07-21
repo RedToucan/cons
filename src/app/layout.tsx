@@ -26,6 +26,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "아르고스의 노트 | 심리학과, 경험주의로 읽는 세상",
   description: "심리학과, 경험주의로 읽는 세상을 나누는 조용한 사색의 공간. 철학, 심리학, 역사, 정치, 문화를 다룹니다.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({
