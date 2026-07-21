@@ -19,6 +19,7 @@ export default defineConfig({
         title: s.string().max(100),
         slug: s.string().optional(),
         date: s.isodate(),
+        updated: s.isodate().optional(),
         description: s.string().optional(),
         category: s.string().default('Philosophy'),
         tags: s.array(s.string()).default([]),
@@ -66,6 +67,7 @@ export default defineConfig({
 
         return {
           ...data,
+          updated: data.updated ?? data.date,
           slug: finalSlug,
           subcategory: finalSubcategory,
           permalink: `/posts/${finalSlug}`,
