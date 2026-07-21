@@ -72,6 +72,11 @@ export default async function PostPage({ params }: Props) {
     month: "long",
     day: "numeric",
   });
+  const formattedUpdatedDate = new Date(post.updated).toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   // JSON-LD Structured Data for Google Blog/Article Recognition
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com";
@@ -95,7 +100,7 @@ export default async function PostPage({ params }: Props) {
     "description": post.description || `${post.author}의 ${post.category} 에세이.`,
     "image": imageUrl ? [imageUrl] : undefined,
     "datePublished": new Date(post.date).toISOString(),
-    "dateModified": new Date(post.date).toISOString(),
+    "dateModified": new Date(post.updated).toISOString(),
     "author": {
       "@type": "Person",
       "name": post.author,
@@ -127,7 +132,7 @@ export default async function PostPage({ params }: Props) {
         </span>
         <h1 className="post-title">{post.title}</h1>
         <div className="post-meta">
-          글쓴이: <span>{post.author}</span> — 발행일: {formattedDate}
+          글쓴이: <span>{post.author}</span> — 발행일: {formattedDate} — 최종 수정일: {formattedUpdatedDate}
           {post.metadata?.readingTime && (
             <> • 읽는 시간: 약 {Math.round(post.metadata.readingTime)}분</>
           )}
