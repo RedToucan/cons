@@ -38,6 +38,7 @@ const subcategoryMap: { [key: string]: string } = {
   machinepolitics: "기계정치",
   chomsky: "노암 촘스키",
   psychology: "심리학",
+  replicationcrisis: "재현성 위기",
 };
 
 
