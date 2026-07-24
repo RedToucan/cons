@@ -24,6 +24,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    (process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com").replace(/\/+$/, "")
+  ),
   title: "아르고스의 노트 | 심리학과, 경험주의로 읽는 세상",
   description: "심리학과, 경험주의로 읽는 세상을 나누는 조용한 사색의 공간. 철학, 심리학, 역사, 정치, 문화를 다룹니다.",
   icons: {
@@ -53,13 +56,13 @@ export default function RootLayout({
             <hr className="editorial-hr" />
             <nav className="site-nav">
               <Link href="/" className="nav-link">홈</Link>
-              <Link href="/?category=Philosophy" className="nav-link">철학</Link>
-              <Link href="/?category=Humanism" className="nav-link">인본주의</Link>
-              <Link href="/?category=Psychology" className="nav-link">심리학</Link>
-              <Link href="/?category=Politics" className="nav-link">정치</Link>
-              <Link href="/?category=Culture" className="nav-link">문화</Link>
-              <Link href="/?category=Lifestyle" className="nav-link">생활</Link>
-              <Link href="/?category=Influencer" className="nav-link">인물 비평</Link>
+              <Link href="/?category=Philosophy" rel="nofollow" className="nav-link">철학</Link>
+              <Link href="/?category=Humanism" rel="nofollow" className="nav-link">인본주의</Link>
+              <Link href="/?category=Psychology" rel="nofollow" className="nav-link">심리학</Link>
+              <Link href="/?category=Politics" rel="nofollow" className="nav-link">정치</Link>
+              <Link href="/?category=Culture" rel="nofollow" className="nav-link">문화</Link>
+              <Link href="/?category=Lifestyle" rel="nofollow" className="nav-link">생활</Link>
+              <Link href="/?category=Influencer" rel="nofollow" className="nav-link">인물 비평</Link>
               <Link href="/board" className="nav-link">자유게시판</Link>
               <Link href="/about" className="nav-link">블로그 소개</Link>
             </nav>
