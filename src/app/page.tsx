@@ -1,4 +1,5 @@
-import { posts } from "content";
+import { posts } from "@/lib/posts";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import fs from "fs";
@@ -9,6 +10,26 @@ type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 type Props = {
   searchParams: SearchParams;
 };
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const params = await searchParams;
+  const hasQueryVariant = Object.values(params).some((value) => value !== undefined);
+
+  return {
+    alternates: {
+      canonical: "/",
+    },
+    robots: hasQueryVariant
+      ? {
+          index: false,
+          follow: true,
+        }
+      : {
+          index: true,
+          follow: true,
+        },
+  };
+}
 
 const categoryMap: { [key: string]: string } = {
   philosophy: "철학",
@@ -179,6 +200,7 @@ export default async function Home({ searchParams }: Props) {
           </Link>
           <Link 
             href="/?mode=all" 
+            rel="nofollow"
             className={`nav-link-tab ${modeFilter === "all" ? 'active' : ''}`}
             style={{ 
               fontFamily: "var(--font-serif)", 
@@ -216,6 +238,7 @@ export default async function Home({ searchParams }: Props) {
         <div className="subcategory-tabs">
           <Link 
             href={`/?category=${categoryFilter}`} 
+            rel="nofollow"
             className={`subcategory-tab ${!subcategoryFilter ? 'active' : ''}`}
           >
             전체
@@ -227,6 +250,7 @@ export default async function Home({ searchParams }: Props) {
               <Link 
                 key={sub}
                 href={`/?category=${categoryFilter}&subcategory=${sub}`}
+                rel="nofollow"
                 className={`subcategory-tab ${isActive ? 'active' : ''}`}
               >
                 {displayName}
@@ -274,7 +298,7 @@ export default async function Home({ searchParams }: Props) {
             {featuredPost.tags && featuredPost.tags.length > 0 && (
               <div className="tag-list" style={{ marginBottom: "1.25rem" }}>
                 {featuredPost.tags.map(tag => (
-                  <Link key={tag} href={`/?tag=${tag}`} className="tag-badge">
+                  <Link key={tag} href={`/?tag=${tag}`} rel="nofollow" className="tag-badge">
                     #{tag}
                   </Link>
                 ))}
@@ -325,7 +349,7 @@ export default async function Home({ searchParams }: Props) {
             {featuredPost.tags && featuredPost.tags.length > 0 && (
               <div className="tag-list" style={{ marginBottom: "1.25rem" }}>
                 {featuredPost.tags.map(tag => (
-                  <Link key={tag} href={`/?tag=${tag}`} className="tag-badge">
+                  <Link key={tag} href={`/?tag=${tag}`} rel="nofollow" className="tag-badge">
                     #{tag}
                   </Link>
                 ))}
@@ -380,7 +404,7 @@ export default async function Home({ searchParams }: Props) {
                   {post.tags && post.tags.length > 0 && (
                     <div className="tag-list" style={{ marginBottom: "1rem" }}>
                       {post.tags.map(tag => (
-                        <Link key={tag} href={`/?tag=${tag}`} className="tag-badge">
+                        <Link key={tag} href={`/?tag=${tag}`} rel="nofollow" className="tag-badge">
                           #{tag}
                         </Link>
                       ))}
@@ -427,7 +451,7 @@ export default async function Home({ searchParams }: Props) {
           }}>
             철학, 심리학, 인물 비평, 문화 분석 등 정원사 헤론이 기록해 온 총 {sortedPosts.length}편의 모든 사색 에세이를 연대기 순으로 만나보실 수 있습니다.
           </p>
-          <Link href="/?mode=all" className="read-more-btn" style={{
+          <Link href="/?mode=all" rel="nofollow" className="read-more-btn" style={{
             fontSize: "1.1rem",
             padding: "0.25rem 0.5rem",
             borderBottomWidth: "3px",

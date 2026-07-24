@@ -1,5 +1,9 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const key = "7f7f0c5a3b2b4e859b8a07c3905c10a4";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com";

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { posts } from 'content';
+import { posts } from '@/lib/posts';
 
 interface RelatedPostsProps {
   slugs: string[];

@@ -29,21 +29,43 @@ export default function BoardPage() {
 
   useEffect(() => {
     document.title = "자유게시판 | 아르고스의 노트";
-    fetchPosts();
+    let ignore = false;
+
+    async function load() {
+      try {
+        const res = await fetch('/api/board');
+        if (!res.ok) throw new Error('Failed to fetch posts');
+        const data = await res.json();
+        if (!ignore) {
+          setPosts(data);
+          setError(null);
+          setLoading(false);
+        }
+      } catch (err: unknown) {
+        if (!ignore) {
+          const message = err instanceof Error ? err.message : '의견을 불러오는 도중 오류가 발생했습니다.';
+          setError(message);
+          setLoading(false);
+        }
+      }
+    }
+
+    load();
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   const fetchPosts = async () => {
     try {
-      setLoading(true);
       const res = await fetch('/api/board');
       if (!res.ok) throw new Error('Failed to fetch posts');
       const data = await res.json();
       setPosts(data);
       setError(null);
-    } catch (err: any) {
-      setError(err.message || '의견을 불러오는 도중 오류가 발생했습니다.');
-    } finally {
-      setLoading(false);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : '의견을 불러오는 도중 오류가 발생했습니다.';
+      setError(message);
     }
   };
 
@@ -76,8 +98,9 @@ export default function BoardPage() {
       setPassword('');
       setContent('');
       await fetchPosts();
-    } catch (err: any) {
-      setFormError(err.message);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : '의견 등록에 실패했습니다.';
+      setFormError(message);
     } finally {
       setSubmitting(false);
     }
@@ -109,8 +132,9 @@ export default function BoardPage() {
       setDeletePassword('');
       setActiveDeleteId(null);
       await fetchPosts();
-    } catch (err: any) {
-      setDeleteError(err.message);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : '삭제에 실패했습니다.';
+      setDeleteError(message);
     } finally {
       setDeleting(false);
     }

@@ -1,18 +1,20 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState, useEffect, FormEvent, Suspense } from 'react';
+import { useState, FormEvent, Suspense } from 'react';
 
 function SearchInputInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const initialQuery = searchParams.get('q') || '';
-  const [query, setQuery] = useState(initialQuery);
+  const currentParam = searchParams.get('q') || '';
 
-  // Sync state with search parameters when they change (e.g. going back, clearing search)
-  useEffect(() => {
-    setQuery(searchParams.get('q') || '');
-  }, [searchParams]);
+  const [query, setQuery] = useState(currentParam);
+  const [prevParam, setPrevParam] = useState(currentParam);
+
+  if (prevParam !== currentParam) {
+    setPrevParam(currentParam);
+    setQuery(currentParam);
+  }
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();

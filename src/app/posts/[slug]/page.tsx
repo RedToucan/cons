@@ -1,4 +1,5 @@
-import { posts } from "content";
+import { posts } from "@/lib/posts";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import MdxContent from "@/components/mdx-content";
@@ -44,17 +45,28 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = posts.find((p) => p.slug === slug);
   if (!post) {
     return {
       title: "글을 찾을 수 없습니다 | 아르고스의 노트",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
   return {
     title: `${post.title} | 아르고스의 노트`,
     description: post.description || `${post.author}의 ${post.category} 에세이.`,
+    alternates: {
+      canonical: `/posts/${post.slug}`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 
@@ -79,7 +91,7 @@ export default async function PostPage({ params }: Props) {
   });
 
   // JSON-LD Structured Data for Google Blog/Article Recognition
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com";
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com").replace(/\/+$/, "");
   let imageUrl: string | undefined = undefined;
   const extensions = ["webp", "png", "jpg", "jpeg"];
   for (const ext of extensions) {
@@ -156,7 +168,7 @@ export default async function PostPage({ params }: Props) {
           <span style={{ fontSize: "0.85rem", color: "var(--text-muted)", display: "block", marginBottom: "0.5rem" }}>관련 태그:</span>
           <div className="tag-list">
             {post.tags.map(tag => (
-              <Link key={tag} href={`/?tag=${tag}`} className="tag-badge">
+              <Link key={tag} href={`/?tag=${tag}`} rel="nofollow" className="tag-badge">
                 #{tag}
               </Link>
             ))}

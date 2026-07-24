@@ -1,8 +1,15 @@
 import { MetadataRoute } from "next";
-import { posts } from "content";
+import { posts } from "@/lib/posts";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com";
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com").replace(/\/+$/, "");
+  const latestPostUpdate = posts.reduce(
+    (latest, post) => {
+      const updated = new Date(post.updated);
+      return updated > latest ? updated : latest;
+    },
+    new Date(0)
+  );
 
   const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${siteUrl}/posts/${post.slug}`,
@@ -14,13 +21,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     {
       url: siteUrl,
-      lastModified: new Date(),
+      lastModified: latestPostUpdate,
       changeFrequency: "daily",
       priority: 1.0,
     },
     {
       url: `${siteUrl}/about`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },

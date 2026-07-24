@@ -2,35 +2,43 @@ import { NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 
+interface PostItem {
+  id: string;
+  nickname: string;
+  password?: string;
+  content: string;
+  createdAt: number;
+}
+
 const DATA_FILE = path.join(process.cwd(), 'data', 'board.json');
 
 async function ensureDirAndFile() {
   const dir = path.dirname(DATA_FILE);
   try {
     await fs.mkdir(dir, { recursive: true });
-  } catch (e) {
+  } catch {
     // Ignore if directory exists
   }
   
   try {
     await fs.access(DATA_FILE);
-  } catch (e) {
+  } catch {
     // Create empty file if not exists
     await fs.writeFile(DATA_FILE, JSON.stringify([]), 'utf-8');
   }
 }
 
-async function readPosts() {
+async function readPosts(): Promise<PostItem[]> {
   await ensureDirAndFile();
   try {
     const data = await fs.readFile(DATA_FILE, 'utf-8');
     return JSON.parse(data);
-  } catch (error) {
+  } catch {
     return [];
   }
 }
 
-async function writePosts(posts: any[]) {
+async function writePosts(posts: PostItem[]) {
   await ensureDirAndFile();
   await fs.writeFile(DATA_FILE, JSON.stringify(posts, null, 2), 'utf-8');
 }
@@ -39,9 +47,9 @@ export async function GET() {
   try {
     const posts = await readPosts();
     // Sort by latest first
-    const sorted = [...posts].sort((a: any, b: any) => b.createdAt - a.createdAt);
+    const sorted = [...posts].sort((a: PostItem, b: PostItem) => b.createdAt - a.createdAt);
     return NextResponse.json(sorted);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to load posts' }, { status: 500 });
   }
 }
@@ -60,8 +68,8 @@ export async function POST(request: Request) {
     }
 
     const posts = await readPosts();
-    const newPost = {
-      id: Date.now().toString() + '-' + Math.random().toString(36).substr(2, 9),
+    const newPost: PostItem = {
+      id: Date.now().toString() + '-' + Math.random().toString(36).substring(2, 11),
       nickname: nickname.trim(),
       password, // In a real app this should be hashed, but simple plaintext check is fine for a basic free board
       content: content.trim(),
@@ -72,9 +80,10 @@ export async function POST(request: Request) {
     await writePosts(posts);
 
     // Don't return password to client
-    const { password: _, ...safePost } = newPost;
+    const safePost: Partial<PostItem> = { ...newPost };
+    delete safePost.password;
     return NextResponse.json(safePost, { status: 201 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to create post' }, { status: 500 });
   }
 }
@@ -89,7 +98,7 @@ export async function DELETE(request: Request) {
     }
 
     const posts = await readPosts();
-    const postIndex = posts.findIndex((p: any) => p.id === id);
+    const postIndex = posts.findIndex((p: PostItem) => p.id === id);
 
     if (postIndex === -1) {
       return NextResponse.json({ error: 'Post not found' }, { status: 404 });
@@ -106,7 +115,7 @@ export async function DELETE(request: Request) {
     await writePosts(posts);
 
     return NextResponse.json({ message: 'Post deleted successfully' });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to delete post' }, { status: 500 });
   }
 }
