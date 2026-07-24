@@ -34,6 +34,19 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/apple-icon.png",
   },
+  openGraph: {
+    title: "아르고스의 노트 | 심리학과, 경험주의로 읽는 세상",
+    description: "심리학과, 경험주의로 읽는 세상을 나누는 조용한 사색의 공간. 철학, 심리학, 역사, 정치, 문화를 다룹니다.",
+    url: "/",
+    siteName: "아르고스의 노트",
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "아르고스의 노트 | 심리학과, 경험주의로 읽는 세상",
+    description: "심리학과, 경험주의로 읽는 세상을 나누는 조용한 사색의 공간. 철학, 심리학, 역사, 정치, 문화를 다룹니다.",
+  },
 };
 
 export default function RootLayout({

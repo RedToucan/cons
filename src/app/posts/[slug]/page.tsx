@@ -57,11 +57,43 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     };
   }
+
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com").replace(/\/+$/, "");
+  let imageUrl: string | undefined = undefined;
+  const extensions = ["webp", "png", "jpg", "jpeg"];
+  for (const ext of extensions) {
+    if (fs.existsSync(path.join(process.cwd(), "public", "images", `${post.slug}.${ext}`))) {
+      imageUrl = `${siteUrl}/images/${post.slug}.${ext}`;
+      break;
+    }
+  }
+
+  const title = `${post.title} | 아르고스의 노트`;
+  const description = post.description || `${post.author}의 ${post.category} 에세이.`;
+
   return {
-    title: `${post.title} | 아르고스의 노트`,
-    description: post.description || `${post.author}의 ${post.category} 에세이.`,
+    title,
+    description,
     alternates: {
       canonical: `/posts/${post.slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `/posts/${post.slug}`,
+      siteName: "아르고스의 노트",
+      locale: "ko_KR",
+      type: "article",
+      publishedTime: new Date(post.date).toISOString(),
+      modifiedTime: new Date(post.updated).toISOString(),
+      authors: [post.author],
+      images: imageUrl ? [{ url: imageUrl, alt: post.title }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: imageUrl ? [imageUrl] : undefined,
     },
     robots: {
       index: true,
@@ -101,6 +133,8 @@ export default async function PostPage({ params }: Props) {
     }
   }
 
+  const categoryKorean = categoryMap[post.category.toLowerCase()] || post.category;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -128,6 +162,31 @@ export default async function PostPage({ params }: Props) {
     },
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "홈",
+        "item": siteUrl,
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": categoryKorean,
+        "item": `${siteUrl}/?category=${encodeURIComponent(post.category)}`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `${siteUrl}/posts/${post.slug}`,
+      },
+    ],
+  };
+
   return (
     <article className="post-container">
       {/* Inject JSON-LD Schema Markup */}
@@ -135,6 +194,12 @@ export default async function PostPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c"),
         }}
       />
       <header className="post-header">
