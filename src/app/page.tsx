@@ -1,4 +1,5 @@
 import { posts } from "@/lib/posts";
+import { getPostCoverImage } from "@/lib/getCoverImage";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -31,15 +32,18 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   };
 }
 
-const categoryMap: { [key: string]: string } = {
-  philosophy: "철학",
-  humanism: "인본주의",
-  psychology: "심리학",
-  politics: "정치",
-  history: "역사",
-  culture: "문화",
-  lifestyle: "생활",
-  influencer: "인물 비평",
+const categoryMap: Record<string, string> = {
+  politics: "정치 (Politics)",
+  psychology: "심리학 (Psychology)",
+  culture: "문학·문화 (Culture)",
+  lifestyle: "삶과 자선 (Lifestyle)",
+};
+
+const categoryDescriptions: Record<string, string> = {
+  politics: "이념의 구호 뒤에 숨은 국가관, 정당 기계, 사법 제도, 그리고 힘의 현실을 분석합니다.",
+  psychology: "인간의 편향, 도덕 기초, 공포의 신경과학, 재현성 위기 등 인간 마음의 지형을 탐구합니다.",
+  culture: "고전 비극, 영화, 사회 비판을 통해 현대 문명의 도덕적 복잡성과 인간 실존을 반추합니다.",
+  lifestyle: "자선과 기부, 자본주의, 기술과 제도의 변화가 개인의 삶과 자유에 미치는 영향을 다룹니다.",
 };
 
 const subcategoryMap: { [key: string]: string } = {
@@ -63,7 +67,7 @@ const subcategoryMap: { [key: string]: string } = {
 };
 
 
-export default async function Home({ searchParams }: Props) {
+export default async function HomePage({ searchParams }: Props) {
   const resolvedSearchParams = await searchParams;
   const categoryFilter = typeof resolvedSearchParams.category === "string" ? resolvedSearchParams.category : undefined;
   const subcategoryFilter = typeof resolvedSearchParams.subcategory === "string" ? resolvedSearchParams.subcategory : undefined;
@@ -77,17 +81,9 @@ export default async function Home({ searchParams }: Props) {
   const sortedPosts = [...posts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   ).map((post) => {
-    let cover: string | undefined = undefined;
-    const extensions = ["webp", "png", "jpg", "jpeg"];
-    for (const ext of extensions) {
-      if (fs.existsSync(path.join(process.cwd(), "public", "images", `${post.slug}.${ext}`))) {
-        cover = `/images/${post.slug}.${ext}`;
-        break;
-      }
-    }
     return {
       ...post,
-      cover,
+      cover: getPostCoverImage(post),
     };
   });
 

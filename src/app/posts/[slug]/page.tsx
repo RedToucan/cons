@@ -1,4 +1,5 @@
 import { posts } from "@/lib/posts";
+import { getPostCoverImage } from "@/lib/getCoverImage";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -59,14 +60,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com").replace(/\/+$/, "");
-  let imageUrl: string | undefined = undefined;
-  const extensions = ["webp", "png", "jpg", "jpeg"];
-  for (const ext of extensions) {
-    if (fs.existsSync(path.join(process.cwd(), "public", "images", `${post.slug}.${ext}`))) {
-      imageUrl = `${siteUrl}/images/${post.slug}.${ext}`;
-      break;
-    }
-  }
+  const coverRelative = getPostCoverImage(post);
+  const imageUrl = coverRelative ? `${siteUrl}${coverRelative}` : undefined;
 
   const title = `${post.title} | 아르고스의 노트`;
   const description = post.description || `${post.author}의 ${post.category} 에세이.`;
@@ -124,14 +119,8 @@ export default async function PostPage({ params }: Props) {
 
   // JSON-LD Structured Data for Google Blog/Article Recognition
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com").replace(/\/+$/, "");
-  let imageUrl: string | undefined = undefined;
-  const extensions = ["webp", "png", "jpg", "jpeg"];
-  for (const ext of extensions) {
-    if (fs.existsSync(path.join(process.cwd(), "public", "images", `${post.slug}.${ext}`))) {
-      imageUrl = `${siteUrl}/images/${post.slug}.${ext}`;
-      break;
-    }
-  }
+  const coverRelative = getPostCoverImage(post);
+  const imageUrl = coverRelative ? `${siteUrl}${coverRelative}` : undefined;
 
   const categoryKorean = categoryMap[post.category.toLowerCase()] || post.category;
 
