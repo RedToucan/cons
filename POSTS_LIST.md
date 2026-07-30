@@ -1,6 +1,6 @@
 # 📚 보수주의자의 정원 - 전체 포스트 목록
 
-> 작성된 총 포스트 수: **306개**
+> 작성된 총 포스트 수: **329개**
 
 ## 📁 Climate (6개)
 
@@ -36,8 +36,10 @@
 - `2026-07-02T00:00:00.000Z` [위험은 증권화되고 책임은 사라졌다](file:///E:/projects/conserv/content/posts/corruption/securitization-of-risk-and-evaporated-responsibility.mdx) - `securitization-of-risk-and-evaporated-responsibility`
   - *대출 위험을 분산한다는 명목의 금융 증권화가 실제로는 각 주체의 유인을 왜곡하고 책임의 주체를 모호하게 만들어 파멸적인 신용 거품과 위기를 초래했음을 분석합니다.*
 
-## 📁 Culture (46개)
+## 📁 Culture (47개)
 
+- `2026-07-28T00:00:00.000Z` [돌턴 트럼보와 피카소가 바라본 한국전쟁](file:///E:/projects/conserv/content/posts/culture/trumbo-and-picasso-korean-war.mdx) - `trumbo-and-picasso-korean-war`
+  - *할리우드 각본가 돌턴 트럼보와 파블로 피카소가 작품을 통해 표현한 한국전쟁의 시선과 그들 세계관의 편향성, 그리고 자유와 역사의 교차점을 다룹니다.*
 - `2026-07-26T00:00:00.000Z` [아킬레우스와 오디세우스: 리버럴과 보수주의자가 계승한 두 영웅의 심리](file:///E:/projects/conserv/content/posts/culture/achilles-and-odysseus-two-heroes.mdx) - `achilles-and-odysseus-two-heroes`
   - *《일리아스》의 아킬레우스와 《오디세이아》의 오디세우스를 통해 진정성과 자존감을 중시하는 리버럴적 심리, 절제와 귀환, 책임을 중시하는 보수주의적 심리의 고대 원형을 고찰합니다.*
 - `2026-07-26T00:00:00.000Z` [야만의 역사가 아니라 동물성의 역사: 《갱스 오브 뉴욕》을 다시 보는 법](file:///E:/projects/conserv/content/posts/culture/gangs-of-new-york-history-of-animality.mdx) - `gangs-of-new-york-history-of-animality`
@@ -131,8 +133,10 @@
 - `2026-06-16T00:00:00.000Z` [배니티 페어는 정치인을 어떻게 소비하는가](file:///E:/projects/conserv/content/posts/culture/vanity-fair-politicians.mdx) - `vanity-fair-politicians`
   - *배니티 페어가 정치인을 어떻게 이야기로 소비하는지, 정책 중심 평가와 인물 중심 평가의 차이를 분석합니다.*
 
-## 📁 Freedom (11개)
+## 📁 Freedom (12개)
 
+- `2026-07-29T00:00:00.000Z` [테오 판 고흐 살해 사건: 살인은 비난했지만 그 신념은 비난하지 않았다](file:///E:/projects/conserv/content/posts/freedom/theo-van-gogh-murder-and-insufficient-muslim-response.mdx) - `theo-van-gogh-murder-and-insufficient-muslim-response`
+  - *테오 판 고흐 살해 이후 무슬림 단체들은 범행을 비난했지만, 신성모독·배교 처벌과 종교법 우위의 논리까지 충분히 거부하지는 않았습니다. 표현의 자유와 종교적 관용의 상호성을 묻습니다.*
 - `2026-07-08T00:00:00.000Z` [병법의 폐해 1: 킹크랩은 기계정치의 한 단면이었다](file:///E:/projects/conserv/content/posts/freedom/kingcrab-machine-politics.mdx) - `kingcrab-machine-politics`
   - *포털 댓글을 조직적으로 조작했던 킹크랩 사건을 통해, 대의정치를 파괴하는 디지털 기계정치와 병법적 정치의 위험성을 분석한 에세이.*
 - `2026-07-03T00:00:00.000Z` [검열은 국가가 직접 하지 않는다: 플랫폼 시대의 정보 통제](file:///E:/projects/conserv/content/posts/freedom/censorship-is-not-directly-by-state.mdx) - `censorship-is-not-directly-by-state`
@@ -328,8 +332,10 @@
 - `2026-06-29T00:00:00.000Z` [바브라 스트라이샌드: 숨기려 할수록 더 퍼지는 인터넷 시대의 역설](file:///E:/projects/conserv/content/posts/influencer/barbrastreisand/the-streisand-effect-internet-paradox.mdx) - `the-streisand-effect-internet-paradox`
   - *유명인이 자신의 사생활 이미지를 숨기려다 오히려 전 세계에 알린 해프닝을 통해 인터넷 시대의 정보 검열과 대중의 심리적 반발을 분석합니다.*
 
-## 📁 Lifestyle (5개)
+## 📁 Lifestyle (6개)
 
+- `2026-07-28T00:00:00.000Z` [보수와 진보는 결혼을 어떻게 다르게 보는가: 일곱 개의 조사로 본 가족관의 차이](file:///E:/projects/conserv/content/posts/lifestyle/marriage/conservative-vs-progressive-views-on-marriage.mdx) - `conservative-vs-progressive-views-on-marriage`
+  - *미국의 결혼·출산·이혼 조사 일곱 개를 통해 보수주의자와 진보주의자가 가족을 서로 다르게 바라보는 방식을 살펴봅니다.*
 - `2026-06-27T00:00:00.000Z` [보수와 진보의 외도관 차이: 결혼 윤리에서 드러나는 정치심리](file:///E:/projects/conserv/content/posts/lifestyle/marriage/conservatives-vs-liberals-views-on-infidelity.mdx) - `conservatives-vs-liberals-views-on-infidelity`
   - *미국 GSS 데이터를 활용하여 보수와 진보의 외도에 대한 태도 차이, 실제 외도 보고율 및 각 진영의 결혼 윤리관 차이를 분석합니다.*
 - `2026-06-21T00:00:00.000Z` [Childless와 Childfree: 자녀가 없는 상태와 자녀를 갖지 않겠다는 정체성](file:///E:/projects/conserv/content/posts/lifestyle/marriage/childless-vs-childfree.mdx) - `childless-vs-childfree`
@@ -341,8 +347,36 @@
 - `2026-06-12T00:00:00.000Z` [감정을 표현하는 사람과 감정을 통제하는 사람](file:///E:/projects/conserv/content/posts/lifestyle/expressing-vs-controlling-emotions.mdx) - `expressing-vs-controlling-emotions`
   - *감정을 표현하는 진보와 감정을 조절하려는 보수. 우리의 정치적 선택 이면에 숨겨진 정서 조절 기질의 차이.*
 
-## 📁 Philosophy (29개)
+## 📁 Philosophy (43개)
 
+- `2026-07-30T00:00:00.000Z` [신화가 비슷하면 집단무의식이 존재하는가](file:///E:/projects/conserv/content/posts/philosophy/misread-classics/do-similar-myths-prove-the-collective-unconscious.mdx) - `do-similar-myths-prove-the-collective-unconscious`
+  - *칼 융의 《인간과 상징》은 세계의 신화와 꿈에서 반복되는 이미지를 집단무의식과 원형의 증거로 읽습니다. 그러나 신화의 유사성은 공통된 신체와 삶의 조건, 문화적 전파로도 설명할 수 있습니다. 원형이 과학적 발견인지 매혹적인 해석의 언어인지 살펴봅니다.*
+- `2026-07-30T00:00:00.000Z` [꿈을 해석하면 정신질환이 낫는가](file:///E:/projects/conserv/content/posts/philosophy/misread-classics/does-interpreting-dreams-cure-mental-illness.mdx) - `does-interpreting-dreams-cure-mental-illness`
+  - *프로이트의 《꿈의 해석》은 꿈의 사전을 만든 책이 아니라 마음속 숨은 욕망을 읽는 해석의 문법을 세운 책입니다. 그 문법이 왜 매혹적이면서도 반증하기 어려운지, 정신분석의 역사적 공헌과 치료 이론으로서의 한계를 함께 살펴봅니다.*
+- `2026-07-30T00:00:00.000Z` [지식을 가르치는 것은 억압인가](file:///E:/projects/conserv/content/posts/philosophy/misread-classics/is-teaching-knowledge-oppression-freire-pedagogy.mdx) - `is-teaching-knowledge-oppression-freire-pedagogy`
+  - *파울로 프레이리의 《페다고지》는 학생 중심 교육의 안내서라기보다 교육을 억압과 해방의 관계로 해석한 정치철학입니다. 은행저금식 교육의 비유가 지식 전달과 권위주의를 어떻게 뒤섞었는지, 교육의 불평등을 해결하려면 왜 오히려 지식이 필요한지 살펴봅니다.*
+- `2026-07-30T00:00:00.000Z` [우리가 잘못 읽은 리영희의 《전환시대의 논리》](file:///E:/projects/conserv/content/posts/philosophy/misread-classics/lee-young-hee-logic-of-the-transitional-era-reconsidered.mdx) - `lee-young-hee-logic-of-the-transitional-era-reconsidered`
+  - *리영희의 《전환시대의 논리》는 권위주의 시대의 정보 독점을 깨뜨렸지만, 중국혁명과 제3세계 사회주의를 역사의 방향으로 배열한 또 하나의 서사이기도 했습니다. 책의 영향력과 정확성을 구분하고, 한국 지식인 사회가 왜 이 서사에 매료되었는지 살펴봅니다.*
+- `2026-07-30T00:00:00.000Z` [《사랑의 기술》은 심리학책이 아니다](file:///E:/projects/conserv/content/posts/philosophy/misread-classics/the-art-of-loving-is-not-a-psychology-book.mdx) - `the-art-of-loving-is-not-a-psychology-book`
+  - *에리히 프롬은 사랑을 실험으로 발견한 것이 아니라 인본주의적으로 정의했습니다. 《사랑의 기술》을 심리학 연구서가 아닌 규범윤리와 사회철학으로 다시 읽고, 경험과 측정만으로 사랑을 설명하려는 현대 심리학의 한계도 함께 살펴봅니다.*
+- `2026-07-30T00:00:00.000Z` [새는 왜 아브락사스에게 날아갔는가](file:///E:/projects/conserv/content/posts/philosophy/misread-classics/why-does-the-bird-fly-to-abraxas-in-demian.mdx) - `why-does-the-bird-fly-to-abraxas-in-demian`
+  - *헤르만 헤세의 《데미안》은 단순한 자아실현의 성장소설이 아닙니다. 알을 깨고 나온 새가 향한 아브락사스의 영지주의적 배경과 융의 신화적 인간관을 통해 우리가 순화해 읽은 작품의 낯선 의미를 복원합니다.*
+- `2026-07-28T00:00:00.000Z` [독단주의 철학으로서의 프랑크푸르트학파](file:///E:/projects/conserv/content/posts/philosophy/newleft/frankfurt-school-as-dogmatic-philosophy.mdx) - `frankfurt-school-as-dogmatic-philosophy`
+  - *프랑크푸르트학파의 비판이론이 현실의 반증을 허위의식과 지배구조로 흡수하며 독단주의 체제화되는 과정을 다루고, 경험주의적 수정 가능성의 중요성을 분석합니다.*
+- `2026-07-28T00:00:00.000Z` [프랑크푸르트학파와 피해자의 정치 그리고 혐오](file:///E:/projects/conserv/content/posts/philosophy/newleft/frankfurt-school-victim-politics-and-hate.mdx) - `frankfurt-school-victim-politics-and-hate`
+  - *프랑크푸르트학파의 비판이론과 마르쿠제의 억압적 관용 논리가 현대 미국의 피해 정체성 및 혐오 담론과 결합하며 공론장을 왜곡하는 구조를 분석합니다.*
+- `2026-07-28T00:00:00.000Z` [동물해방의 숨은 조상, 헤르베르트 마르쿠제](file:///E:/projects/conserv/content/posts/philosophy/newleft/marcuse-and-animal-liberation.mdx) - `marcuse-and-animal-liberation`
+  - *헤르베르트 마르쿠제의 자연 지배 비판과 새로운 감수성 논리가 어떻게 급진적 동물해방론으로 연결되며, 말할 수 없는 동물을 대리하는 운동가의 검증 문제를 분석합니다.*
+- `2026-07-28T00:00:00.000Z` [피해자의 이름으로 관용을 억압하다](file:///E:/projects/conserv/content/posts/philosophy/newleft/repressive-tolerance-and-marcuse.mdx) - `repressive-tolerance-and-marcuse`
+  - *헤르베르트 마르쿠제의 억압적 관용 이론이 어떻게 피해자를 대변한다는 지적 권력을 낳고 보편적 표현의 자유와 관용을 억압하는 논리로 변질되었는지를 분석합니다.*
+- `2026-07-28T00:00:00.000Z` [소칼 사건은 좌파 내부의 반란이었다](file:///E:/projects/conserv/content/posts/philosophy/newleft/sokal-affair-rebellion-within-the-left.mdx) - `sokal-affair-rebellion-within-the-left`
+  - *1996년 소칼 사건을 중심으로 올드 레프트의 과학적 경험주의와 뉴 레프트의 포스트모던 상대주의가 부딪힌 지점과 객관적 사실의 중요성을 다룹니다.*
+- `2026-07-28T00:00:00.000Z` [웨이슨 카드와 주디스 슈클라의 정치철학](file:///E:/projects/conserv/content/posts/philosophy/wason-card-and-judith-shklar.mdx) - `wason-card-and-judith-shklar`
+  - *인지심리학의 웨이슨 선택 과제와 주디스 슈클라의 '공포의 자유주의'를 통해 정의의 이론에만 매몰되지 않고 불의의 징후와 반증 사례를 포착하는 경험적 태도를 살펴봅니다.*
+- `2026-07-28T00:00:00.000Z` [하이데거는 왜 나치가 되었는가](file:///E:/projects/conserv/content/posts/philosophy/why-heidegger-became-a-nazi.mdx) - `why-heidegger-became-a-nazi`
+  - *아이히만의 무사유와 대비되는 하이데거의 지적 오만을 분석하며, 현실에 의해 수정되지 않는 거대한 철학이 어떻게 독단주의와 비극적 정치 선택으로 이어지는지 다룹니다.*
+- `2026-07-28T00:00:00.000Z` [야스퍼스는 왜 나치에 협력하지 않았는가](file:///E:/projects/conserv/content/posts/philosophy/why-jaspers-did-not-cooperate-with-nazis.mdx) - `why-jaspers-did-not-cooperate-with-nazis`
+  - *하이데거와 카를 야스퍼스의 대비를 통해, 오류 수정 가능성과 경험주의적 겸손, 그리고 실존적 소통이 전체주의의 독단에 맞서는 힘이 됨을 분석합니다.*
 - `2026-07-19T00:00:00.000Z` [E.H. 카는 왜 스탈린의 폭력을 제대로 보지 못했는가](file:///E:/projects/conserv/content/posts/philosophy/eh-carr-historical-progress-and-humanism.mdx) - `eh-carr-historical-progress-and-humanism`
   - *E.H. 카가 역사적 진보와 소련의 산업화를 중시하면서 스탈린 체제의 희생을 충분히 보지 못한 이유를 시대적 거대 이론, 인지편향, 인본주의의 부재라는 관점에서 살펴봅니다.*
 - `2026-07-13T00:00:00.000Z` [이름 없는 기둥, 소시민 보수주의자들](file:///E:/projects/conserv/content/posts/philosophy/nameless-pillars-ordinary-conservatives.mdx) - `nameless-pillars-ordinary-conservatives`
@@ -377,12 +411,12 @@
   - *경험주의는 철학이 아니라 삶의 태도다. 현실과 자신의 생각이 충돌할 때 어떤 선택을 할 것인가에 대한 뉴턴, 흄, 쿤의 경험주의적 태도.*
 - `2026-06-16T00:00:00.000Z` [경험주의는 생각보다 어렵다](file:///E:/projects/conserv/content/posts/philosophy/why-empiricism-is-difficult.mdx) - `why-empiricism-is-difficult`
   - *증거를 믿는다는 것의 진정한 의미. 포퍼와 쿤의 논쟁, 과학적 회의주의의 위험성, 그리고 현실을 모델보다 우선하는 태도의 어려움.*
-- `2026-06-14T00:00:00.000Z` [보수와 진보는 정말 다르게 생각하는가: 버크와 페인으로 읽는 반박](file:///E:/projects/conserv/content/posts/philosophy/burke-paine-french-revolution-critique.mdx) - `burke-paine-french-revolution-critique`
+- `2026-06-14T00:00:00.000Z` [보수와 진보는 정말 다르게 생각하는가: 버크와 페인으로 읽는 반박](file:///E:/projects/conserv/content/posts/influencer/최강욱/burke-paine-french-revolution-critique.mdx) - `burke-paine-french-revolution-critique`
   - *최강욱의 가상 대화를 출발점으로, 버크와 페인을 통해 보수와 진보가 세상을 보는 차이를 반박하고 재해석한다.*
+- `2026-06-14T00:00:00.000Z` [독단주의란 무엇인가: 신념을 대하는 태도에 관하여](file:///E:/projects/conserv/content/posts/influencer/최강욱/dogmatism-and-beliefs.mdx) - `dogmatism-and-beliefs`
+  - *내가 틀릴 수 있다는 사실을 잊었을 때 시작되는 독단주의. 합리주의와 경험주의의 차이, 그리고 존 스튜어트 밀이 말한 지적 겸손의 필요성.*
 - `2026-06-14T00:00:00.000Z` [전문가는 사람을 보는 눈이 있을까?](file:///E:/projects/conserv/content/posts/philosophy/do-experts-have-an-eye-for-people.mdx) - `do-experts-have-an-eye-for-people`
   - *텍사스 의대 면접의 이례적인 사례와 가석방 심사 통계를 통해 본 전문가 직관의 한계. 우리의 판단을 데이터로 검증하려는 경험주의의 본질.*
-- `2026-06-14T00:00:00.000Z` [독단주의란 무엇인가: 신념을 대하는 태도에 관하여](file:///E:/projects/conserv/content/posts/philosophy/dogmatism-and-beliefs.mdx) - `dogmatism-and-beliefs`
-  - *내가 틀릴 수 있다는 사실을 잊었을 때 시작되는 독단주의. 합리주의와 경험주의의 차이, 그리고 존 스튜어트 밀이 말한 지적 겸손의 필요성.*
 - `2026-06-14T00:00:00.000Z` [진보는 보수를 어떻게 보는가?](file:///E:/projects/conserv/content/posts/philosophy/how-liberals-see-conservatives.mdx) - `how-liberals-see-conservatives`
   - *수원대 송희성 교수의 칼럼을 통해 본 진보 지식인들의 보수관. 대상에 대한 실제 관찰보다 이념적 모델을 앞세우는 규범주의적 시각의 한계와 반증 가능성의 중요성.*
 - `2026-06-14T00:00:00.000Z` [보수주의는 이기심을 정당화하기 위한 철학인가?](file:///E:/projects/conserv/content/posts/philosophy/is-conservatism-a-philosophy-to-justify-selfishness.mdx) - `is-conservatism-a-philosophy-to-justify-selfishness`
@@ -402,8 +436,18 @@
 - `2026-06-14T00:00:00.000Z` [진보는 왜 보수를 권위주의로 오해하는가: 레이코프와 스테너 비평](file:///E:/projects/conserv/content/posts/philosophy/why-liberals-misunderstand-conservatism-as-authoritarianism.mdx) - `why-liberals-misunderstand-conservatism-as-authoritarianism`
   - *카렌 스테너(Karen Stenner)의 'The Authoritarian Dynamic'을 통해 보수주의와 권위주의의 구분을 살펴보고, 진보 진영의 레이코프식 심리 환원론을 넘어선 보다 정교한 보수주의 비평의 가능성과 한계를 논합니다.*
 
-## 📁 Politics (63개)
+## 📁 Politics (68개)
 
+- `2026-07-29T00:00:00.000Z` [힐러리 이메일과 위키리크스는 같은 사건이 아니다: 사설 서버·DNC 해킹·포데스타 이메일의 차이](file:///E:/projects/conserv/content/posts/politics/hillary-clinton-wikileaks-alinsky-email-war.mdx) - `hillary-clinton-wikileaks-alinsky-email-war`
+  - *힐러리 사설 이메일 서버, 러시아의 DNC 해킹, 포데스타 이메일 유출은 출처와 법적 성격이 다른 사건입니다. 세 사건의 차이와 해킹의 불법성이 폭로된 내용의 검증을 대신할 수 없는 이유를 분석합니다.*
+- `2026-07-29T00:00:00.000Z` [힐러리 클린턴 사설 이메일 서버 사건: 기록 통제와 책임 회피의 프레임](file:///E:/projects/conserv/content/posts/politics/how-hillary-clinton-repurposed-alinsky-strategy.mdx) - `how-hillary-clinton-repurposed-alinsky-strategy`
+  - *힐러리 클린턴은 국무장관 재임 중 정부 계정 대신 사설 이메일 서버를 사용했습니다. 기록 통제권, 기밀정보 관리, 불기소와 공직 윤리의 차이, 알린스키식 프레임 전환을 분석합니다.*
+- `2026-07-29T00:00:00.000Z` [정치적 갈등은 왜 대화와 공감만으로 풀리지 않는가: 이해관계와 가치의 충돌](file:///E:/projects/conserv/content/posts/politics/politics-is-not-reconciliation.mdx) - `politics-is-not-reconciliation`
+  - *정치적 갈등에는 오해와 편견도 존재하지만, 대화만으로 해소되지 않는 이해관계·가치·권력의 충돌도 있습니다. 상대를 계몽의 대상으로 보는 정치가 왜 타협을 어렵게 만드는지 분석합니다.*
+- `2026-07-29T00:00:00.000Z` [정치 범죄를 '내로남불'이라 부르면 안 되는 이유: 권력남용을 위선으로 축소하는 프레임](file:///E:/projects/conserv/content/posts/politics/why-the-term-naeronambul-is-flawed.mdx) - `why-the-term-naeronambul-is-flawed`
+  - *정치인이 권력남용과 범죄 혐의를 '내로남불'이라고 부르면 법률 위반이 단순한 위선과 진영 간 이중잣대 논란으로 축소됩니다. 정치 범죄에 정확한 이름을 붙여야 하는 이유와 내로남불 프레임의 문제를 분석합니다.*
+- `2026-07-26T00:00:00.000Z` [보수주의자는 승자독식을 좋아한다는 말에 대한 오해](file:///E:/projects/conserv/content/posts/politics/misunderstanding-winner-take-all.mdx) - `misunderstanding-winner-take-all`
+  - *승자독식은 시장에만 존재하지 않습니다. 학계·언론·문화계의 영향력 집중과 실증적 정파 불균형 데이터를 파헤치며, 리버럴과 보수주의자가 서로 다른 보상을 어떻게 인식하는지 살펴봅니다.*
 - `2026-07-24T00:00:00.000Z` [[사법과 혐오 ③] 범죄를 수사하는가, 사람을 수사하는가](file:///E:/projects/conserv/content/posts/politics/disgust/from-witch-trials-to-targeted-investigation.mdx) - `from-witch-trials-to-targeted-investigation`
   - *반복 수사는 언제 정당한 재수사이고 언제 표적 수사에 가까워지는가. 새로운 증거, 혐의의 특정성, 수단의 비례성, 종료 조건으로 구분합니다.*
 - `2026-07-24T00:00:00.000Z` [[사법과 혐오 ①] 사회가 피고인을 혐오하면 재판은 어떻게 변질되는가](file:///E:/projects/conserv/content/posts/politics/disgust/how-disgust-distorts-trials.mdx) - `how-disgust-distorts-trials`
@@ -498,32 +542,32 @@
   - *하버드 대학 신문 《하버드 크림슨》에 실린 칼럼을 통해, 리버럴 진영의 도덕적 우월주의와 보수주의자에 대한 편견 섞인 고정관념을 정면으로 반박합니다.*
 - `2026-06-24T00:00:00.000Z` [누가 정말 남을 돕는가? 아서 브룩스가 밝히는 보수의 자선과 진보의 위선](file:///E:/projects/conserv/content/posts/politics/who-really-cares-the-charity-divide.mdx) - `who-really-cares-the-charity-divide`
   - *아서 C. Brooks의 『Who Really Cares』를 통해 보수주의자와 리버럴 진영의 실제 기부·자원봉사 데이터를 비교하고, 도덕적 구호와 실질적 선행 간의 불편한 진실을 고찰합니다.*
-- `2026-06-23T00:00:00.000Z` [새는 정말 좌우 날개로 나는가? 리영희식 비유의 한계와 진보의 외교관 비판](file:///E:/projects/conserv/content/posts/politics/does-a-bird-fly-with-left-and-right-wings.mdx) - `does-a-bird-fly-with-left-and-right-wings`
+- `2026-06-23T00:00:00.000Z` [새는 정말 좌우 날개로 나는가? 리영희식 비유의 한계와 진보의 외교관 비판](file:///E:/projects/conserv/content/posts/influencer/최강욱/does-a-bird-fly-with-left-and-right-wings.mdx) - `does-a-bird-fly-with-left-and-right-wings`
   - *최강욱의 '이로운 보수 의로운 진보'에 수록된 '새는 좌우의 날개로 난다' 등의 주장을 분석하여, 리영희 문장의 한계와 문화대혁명에 대한 선택적 인본주의, 그리고 중국과 미국·일본에 대한 외교적 인식의 편향성을 비판적으로 고찰합니다.*
+- `2026-06-23T00:00:00.000Z` [오바마는 정말 '의로운 진보'의 화신인가: 이미지 정치와 미국의 국익](file:///E:/projects/conserv/content/posts/influencer/최강욱/is-obama-really-a-righteous-progressive.mdx) - `is-obama-really-a-righteous-progressive`
+  - *버락 오바마 전 미국 대통령을 '의로운 진보'의 대표 모델로 삼는 시각을 비판적으로 검토하고, 오바마케어의 한계와 드론 공습, 동아시아 안보 재편 등 현실주의 정치인으로서의 오바마를 분석합니다.*
 - `2026-06-23T00:00:00.000Z` [정치 성향이 다르면 친구를 끊어야 할까? 진보 지지자가 관계를 단절하는 이유](file:///E:/projects/conserv/content/posts/politics/does-politics-overrule-friendship.mdx) - `does-politics-overrule-friendship`
   - *정치적 이념과 개인적 친밀성이 충돌할 때 보수와 진보가 내리는 선택의 차이를 분석하고, 추상적 도덕보편주의와 구체적 관계지향성이 사회에 미치는 영향을 고찰합니다.*
-- `2026-06-23T00:00:00.000Z` [오바마는 정말 '의로운 진보'의 화신인가: 이미지 정치와 미국의 국익](file:///E:/projects/conserv/content/posts/politics/is-obama-really-a-righteous-progressive.mdx) - `is-obama-really-a-righteous-progressive`
-  - *버락 오바마 전 미국 대통령을 '의로운 진보'의 대표 모델로 삼는 시각을 비판적으로 검토하고, 오바마케어의 한계와 드론 공습, 동아시아 안보 재편 등 현실주의 정치인으로서의 오바마를 분석합니다.*
-- `2026-06-22T00:00:00.000Z` [메르켈은 정말 '이로운 보수'의 모범인가: 타협 정치와 안보 실패의 그늘](file:///E:/projects/conserv/content/posts/politics/is-merkel-really-a-beneficial-conservative.mdx) - `is-merkel-really-a-beneficial-conservative`
+- `2026-06-22T00:00:00.000Z` [메르켈은 정말 '이로운 보수'의 모범인가: 타협 정치와 안보 실패의 그늘](file:///E:/projects/conserv/content/posts/influencer/최강욱/is-merkel-really-a-beneficial-conservative.mdx) - `is-merkel-really-a-beneficial-conservative`
   - *앙겔라 메르켈 전 독일 총리를 '이로운 보수'의 대표 모델로 삼는 진보 진영의 시각을 비판적으로 검토하고, 안보 및 에너지 정책에서의 실정과 진정한 보수주의적 가치를 분석합니다.*
 - `2026-06-22T00:00:00.000Z` [가난한 사람은 왜 보수정당에 투표하는가: 계급 배반 프레임의 한계](file:///E:/projects/conserv/content/posts/politics/why-do-the-poor-vote-conservative.mdx) - `why-do-the-poor-vote-conservative`
   - *"왜 가난한 사람은 부자를 위해 투표하는가"라는 프레임의 협소함을 지적하고, 저소득층이 보수정당을 선택하는 합리적인 이유와 가치를 분석합니다.*
-- `2026-06-21T00:00:00.000Z` [부자는 정말 스크루지인가: 자기보고식 도덕성 조사의 함정](file:///E:/projects/conserv/content/posts/lifestyle/charity/are-the-rich-really-scrooges-and-the-trap-of-self-reported-morality.mdx) - `are-the-rich-really-scrooges-and-the-trap-of-self-reported-morality`
+- `2026-06-21T00:00:00.000Z` [부자는 정말 스크루지인가: 자기보고식 도덕성 조사의 함정](file:///E:/projects/conserv/content/posts/influencer/최강욱/are-the-rich-really-scrooges-and-the-trap-of-self-reported-morality.mdx) - `are-the-rich-really-scrooges-and-the-trap-of-self-reported-morality`
   - *《이로운 보수 의로운 진보》에 인용된 67개국 도덕성 연구의 실체를 분석하며, 자기보고식 도덕성 조사가 안고 있는 한계와 리버럴의 도덕 우화가 지닌 맹점을 성찰합니다.*
-- `2026-06-21T00:00:00.000Z` [진보주의자가 보는 보수주의자, 그리고 자신들의 자화상](file:///E:/projects/conserv/content/posts/politics/liberals-self-image-and-moral-imagination-about-conservatives.mdx) - `liberals-self-image-and-moral-imagination-about-conservatives`
+- `2026-06-21T00:00:00.000Z` [진보주의자가 보는 보수주의자, 그리고 자신들의 자화상](file:///E:/projects/conserv/content/posts/influencer/최강욱/liberals-self-image-and-moral-imagination-about-conservatives.mdx) - `liberals-self-image-and-moral-imagination-about-conservatives`
   - *《이로운 보수 의로운 진보》에 등장하는 봉수 씨와 진봉 씨의 대비를 통해, 진보주의자가 상상하는 보수의 모습과 그들의 도덕적 자기 서사에 대해 성찰합니다.*
-- `2026-06-21T00:00:00.000Z` [시장인가 국가인가: 진보는 왜 국가를 선한 심판으로 상상하는가](file:///E:/projects/conserv/content/posts/politics/market-vs-state-market-failure-and-government-failure.mdx) - `market-vs-state-market-failure-and-government-failure`
+- `2026-06-21T00:00:00.000Z` [시장인가 국가인가: 진보는 왜 국가를 선한 심판으로 상상하는가](file:///E:/projects/conserv/content/posts/influencer/최강욱/market-vs-state-market-failure-and-government-failure.mdx) - `market-vs-state-market-failure-and-government-failure`
   - *《이로운 보수 의로운 진보》에 나타난 시장과 국가에 대한 대립을 짚으며, 시장의 실패와 국가의 실패를 동시에 바라보는 현실적 균형감각의 필요성을 분석합니다.*
-- `2026-06-21T00:00:00.000Z` [가난의 고통과 공정의 착각: 최강욱의 빈곤론에 대한 비평](file:///E:/projects/conserv/content/posts/politics/pain-of-poverty-and-illusion-of-fairness.mdx) - `pain-of-poverty-and-illusion-of-fairness`
+- `2026-06-21T00:00:00.000Z` [가난의 고통과 공정의 착각: 최강욱의 빈곤론에 대한 비평](file:///E:/projects/conserv/content/posts/influencer/최강욱/pain-of-poverty-and-illusion-of-fairness.mdx) - `pain-of-poverty-and-illusion-of-fairness`
   - *《이로운 보수 의로운 진보》에 나타난 빈곤론을 입체적으로 해체하며, 절대적 가난과 상대적 박탈감의 괴리, 그리고 필요와 기여라는 공정 정의의 대립을 성찰합니다.*
+- `2026-06-21T00:00:00.000Z` [보편복지냐 선별복지냐: 문제는 복지 방식이 아니라 공정의 정의입니다](file:///E:/projects/conserv/content/posts/influencer/최강욱/universal-vs-selective-welfare-the-definition-of-fairness.mdx) - `universal-vs-selective-welfare-the-definition-of-fairness`
+  - *《이로운 보수 의로운 진보》 속 보편복지와 선별복지의 논쟁을 심층 분석하며, 그 저변에 깔려 있는 리버럴과 보수의 공정 정의 충돌을 살핍니다.*
+- `2026-06-21T00:00:00.000Z` [안정이 우선인가, 변화가 우선인가: 보수는 왜 변화를 두려워하는가](file:///E:/projects/conserv/content/posts/influencer/최강욱/why-conservatives-fear-change-and-prefer-stability-over-reform.mdx) - `why-conservatives-fear-change-and-prefer-stability-over-reform`
+  - *《이로운 보수 의로운 진보》에 나타난 안정과 변화의 이념적 대립을 짚고, 역사적 교훈을 통해 보수주의가 변화에 신중한 진짜 이유를 탐색합니다.*
 - `2026-06-21T00:00:00.000Z` [정치에서 기생 후 탈피란 무엇인가](file:///E:/projects/conserv/content/posts/politics/parasitic-takeover-of-parties.mdx) - `parasitic-takeover-of-parties`
   - *정당이 내부에서 성장한 세력에 의해 외형만 남기고 실질적 성격과 권력 구조가 장악당하는 '기생 후 탈피(parasitic takeover)' 현상을 분석합니다. 침투와 자원 흡수, 외피 탈피로 이어지는 정당 변질의 메커니즘을 규명합니다.*
-- `2026-06-21T00:00:00.000Z` [보편복지냐 선별복지냐: 문제는 복지 방식이 아니라 공정의 정의입니다](file:///E:/projects/conserv/content/posts/politics/universal-vs-selective-welfare-the-definition-of-fairness.mdx) - `universal-vs-selective-welfare-the-definition-of-fairness`
-  - *《이로운 보수 의로운 진보》 속 보편복지와 선별복지의 논쟁을 심층 분석하며, 그 저변에 깔려 있는 리버럴과 보수의 공정 정의 충돌을 살핍니다.*
 - `2026-06-21T00:00:00.000Z` [느린 붕괴란 무엇인가](file:///E:/projects/conserv/content/posts/politics/what-is-slow-collapse-and-why-systems-fail-from-within.mdx) - `what-is-slow-collapse-and-why-systems-fail-from-within`
   - *겉으로는 멀쩡해 보여도 내부적으로 이미 무너지고 있는 조직과 체제를 ‘느린 붕괴’라는 개념으로 설명합니다.*
-- `2026-06-21T00:00:00.000Z` [안정이 우선인가, 변화가 우선인가: 보수는 왜 변화를 두려워하는가](file:///E:/projects/conserv/content/posts/politics/why-conservatives-fear-change-and-prefer-stability-over-reform.mdx) - `why-conservatives-fear-change-and-prefer-stability-over-reform`
-  - *《이로운 보수 의로운 진보》에 나타난 안정과 변화의 이념적 대립을 짚고, 역사적 교훈을 통해 보수주의가 변화에 신중한 진짜 이유를 탐색합니다.*
 - `2026-06-20T00:00:00.000Z` [보수주는 정말 멍청할까? 정치 지식 조사 결과가 보여주는 의외의 사실](file:///E:/projects/conserv/content/posts/politics/are-conservatives-really-stupid.mdx) - `are-conservatives-really-stupid`
   - *보수주의자가 진보주의자보다 무지하다는 통념에 대해 Pew Research Center의 정치 지식 조사 데이터를 분석하여 팩트를 들여다봅니다.*
 - `2026-06-20T00:00:00.000Z` [세종대왕의 공법 개혁: 가장 신중한 개혁이 보여준 보수주의의 본질](file:///E:/projects/conserv/content/posts/politics/sejong-progressive-realist.mdx) - `sejong-progressive-realist`
@@ -531,8 +575,12 @@
 - `2026-06-20T00:00:00.000Z` [조지 W. 부시는 정말 ‘멍청한 대통령’이었을까?](file:///E:/projects/conserv/content/posts/politics/was-george-w-bush-really-a-stupid-president.mdx) - `was-george-w-bush-really-a-stupid-president`
   - *조지 W. 부시의 IQ가 91이라는 가짜 보고서는 왜 그렇게 쉽게 퍼졌을까? 정치적 확증편향과 지적 우월감의 문제를 살펴봅니다.*
 
-## 📁 Psychology (33개)
+## 📁 Psychology (35개)
 
+- `2026-07-28T00:00:00.000Z` [뇌에 불이 켜졌다고 마음을 읽은 것은 아닙니다](file:///E:/projects/conserv/content/posts/psychology/dead-salmon-and-neurodeterminism.mdx) - `dead-salmon-and-neurodeterminism`
+  - *죽은 연어 실험과 역추론의 문제를 통해 fMRI 뇌영상 해석의 함정, 신경결정론의 위험성, 그리고 경험주의와 보수주의가 갖춰야 할 지적 겸손을 다룹니다.*
+- `2026-07-28T00:00:00.000Z` [《굿 윌 헌팅》의 눈물은 치료의 증거인가](file:///E:/projects/conserv/content/posts/psychology/good-will-hunting-tears-and-psychotherapy.mdx) - `good-will-hunting-tears-and-psychotherapy`
+  - *영화 《굿 윌 헌팅》의 카타르시스 장면을 시작으로 프로이트/라이히의 정신분석부터 《크레이지 테라피》까지, 반증 불가능한 심리치료의 매혹과 한계를 다룹니다.*
 - `2026-07-25T00:00:00.000Z` [왜 나의 분노만 정의라고 믿는가: 사단칠정 논쟁의 현대적 해석](file:///E:/projects/conserv/content/posts/psychology/is-morality-possible-without-emotion.mdx) - `is-morality-possible-without-emotion`
   - *자신의 도덕 감정은 순수하고 상대의 감정은 욕망이라고 믿는 이유를 사단칠정 논쟁과 현대 감정심리학, 다마시오의 사례를 통해 살펴봅니다.*
 - `2026-07-17T00:00:00.000Z` [한국인에 대한 컬처맵: 우리는 왜 이렇게 말하고, 결정하고, 갈등하는가](file:///E:/projects/conserv/content/posts/psychology/korean-culture-map.mdx) - `korean-culture-map`
@@ -600,7 +648,7 @@
 - `2026-06-11T00:00:00.000Z` [쥐는 왜 벽을 따라 달릴까?](file:///E:/projects/conserv/content/posts/psychology/neuroscience-of-fear-and-conservatism.mdx) - `neuroscience-of-fear-and-conservatism`
   - *쥐가 벽을 따라 달리는 진화심리학적 이유를 분석하고, 보수 성향과 뇌과학의 상관관계를 탐구합니다. 편도체 크기 및 공포 반응 실험을 통해 보수와 진보의 위협 민감성 차이를 규명합니다.*
 
-## 📁 기타 (22개)
+## 📁 기타 (21개)
 
 -  [apocalypse-now-madness-and-civilization](file:///E:/projects/conserv/content/posts/culture/apocalypse-now-madness-and-civilization.mdx) - `apocalypse-now-madness-and-civilization`
 -  [progressive-marriage-view](file:///E:/projects/conserv/content/posts/lifestyle/marriage/progressive-marriage-view.mdx) - `progressive-marriage-view`
@@ -611,7 +659,6 @@
 -  [05-how-feminism-politicized-private-life](file:///E:/projects/conserv/content/posts/politics/hegemony/05-how-feminism-politicized-private-life.mdx) - `05-how-feminism-politicized-private-life`
 -  [06-how-postmodernism-created-new-enemies](file:///E:/projects/conserv/content/posts/politics/hegemony/06-how-postmodernism-created-new-enemies.mdx) - `06-how-postmodernism-created-new-enemies`
 -  [07-can-retrievers-live-with-wolves](file:///E:/projects/conserv/content/posts/politics/hegemony/07-can-retrievers-live-with-wolves.mdx) - `07-can-retrievers-live-with-wolves`
--  [misunderstanding-winner-take-all](file:///E:/projects/conserv/content/posts/politics/misunderstanding-winner-take-all.mdx) - `misunderstanding-winner-take-all`
 -  [01-experiments-too-beautiful-to-doubt](file:///E:/projects/conserv/content/posts/psychology/replicationcases/01-experiments-too-beautiful-to-doubt.mdx) - `01-experiments-too-beautiful-to-doubt`
 -  [02-is-willpower-really-depleted-like-a-battery](file:///E:/projects/conserv/content/posts/psychology/replicationcases/02-is-willpower-really-depleted-like-a-battery.mdx) - `02-is-willpower-really-depleted-like-a-battery`
 -  [03-not-one-paper-the-whole-field-shook](file:///E:/projects/conserv/content/posts/psychology/replicationcases/03-not-one-paper-the-whole-field-shook.mdx) - `03-not-one-paper-the-whole-field-shook`
