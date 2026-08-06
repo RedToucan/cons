@@ -1,4 +1,6 @@
 {
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
   "terminal.integrated.defaultProfile.windows": "Command Prompt",
   "editor.semanticHighlighting.enabled": true,
   "editor.tokenColorCustomizations": {
