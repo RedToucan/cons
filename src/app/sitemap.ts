@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { posts } from "@/lib/posts";
+import { categoryDefinitions } from "@/data/categories";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com").replace(/\/+$/, "");
@@ -18,6 +19,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
+  const categoryEntries: MetadataRoute.Sitemap = categoryDefinitions.map((category) => {
+    const categoryPosts = posts.filter(
+      (post) => post.category.toLowerCase() === category.value.toLowerCase(),
+    );
+    const categoryLastModified = categoryPosts.reduce(
+      (latest, post) => {
+        const updated = new Date(post.updated);
+        return updated > latest ? updated : latest;
+      },
+      new Date(0),
+    );
+
+    return {
+      url: `${siteUrl}/categories/${category.slug}`,
+      lastModified: categoryLastModified,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    };
+  });
+
   return [
     {
       url: siteUrl,
@@ -30,6 +51,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.5,
     },
+    {
+      url: `${siteUrl}/archive`,
+      lastModified: latestPostUpdate,
+      changeFrequency: "daily",
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/guides/conservative-progressive`,
+      lastModified: latestPostUpdate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    ...categoryEntries,
     ...postEntries,
   ];
 }

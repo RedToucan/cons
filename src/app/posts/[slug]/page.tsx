@@ -4,19 +4,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import MdxContent from "@/components/mdx-content";
-import fs from "fs";
-import path from "path";
-
-const categoryMap: { [key: string]: string } = {
-  philosophy: "철학",
-  humanism: "인본주의",
-  psychology: "심리학",
-  politics: "정치",
-  history: "역사",
-  culture: "문화",
-  lifestyle: "생활",
-  influencer: "인물 비평",
-};
+import {
+  getCategoryHref,
+  getCategoryLabel,
+} from "@/data/categories";
+import { conservativeProgressiveGuide } from "@/data/readingGuides";
 
 const subcategoryMap: { [key: string]: string } = {
   marriage: "결혼",
@@ -39,6 +31,38 @@ const subcategoryMap: { [key: string]: string } = {
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+type Post = (typeof posts)[number];
+
+const postsByDate = [...posts].sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+);
+
+function findRelatedPosts(currentPost: Post) {
+  return posts
+    .filter((post) => post.slug !== currentPost.slug)
+    .map((post) => {
+      const sharedTags = post.tags.filter((tag) => currentPost.tags.includes(tag)).length;
+      const score =
+        (post.category.toLowerCase() === currentPost.category.toLowerCase() ? 6 : 0) +
+        (post.subcategory && currentPost.subcategory &&
+        post.subcategory.toLowerCase() === currentPost.subcategory.toLowerCase()
+          ? 4
+          : 0) +
+        sharedTags * 2;
+
+      return { post, score };
+    })
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+      return new Date(b.post.date).getTime() - new Date(a.post.date).getTime();
+    })
+    .slice(0, 4)
+    .map(({ post }) => post);
+}
 
 export async function generateStaticParams() {
   return posts.map((post) => ({
@@ -122,7 +146,18 @@ export default async function PostPage({ params }: Props) {
   const coverRelative = getPostCoverImage(post);
   const imageUrl = coverRelative ? `${siteUrl}${coverRelative}` : undefined;
 
-  const categoryKorean = categoryMap[post.category.toLowerCase()] || post.category;
+  const categoryKorean = getCategoryLabel(post.category);
+  const categoryHref = getCategoryHref(post.category);
+  const currentPostIndex = postsByDate.findIndex((item) => item.slug === post.slug);
+  const newerPost = currentPostIndex > 0 ? postsByDate[currentPostIndex - 1] : undefined;
+  const olderPost =
+    currentPostIndex >= 0 && currentPostIndex < postsByDate.length - 1
+      ? postsByDate[currentPostIndex + 1]
+      : undefined;
+  const relatedPosts = findRelatedPosts(post);
+  const guideChapters = conservativeProgressiveGuide.chapters.filter((chapter) =>
+    chapter.slugs.includes(post.slug),
+  );
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -165,7 +200,7 @@ export default async function PostPage({ params }: Props) {
         "@type": "ListItem",
         "position": 2,
         "name": categoryKorean,
-        "item": `${siteUrl}/?category=${encodeURIComponent(post.category)}`,
+        "item": `${siteUrl}${categoryHref}`,
       },
       {
         "@type": "ListItem",
@@ -192,10 +227,10 @@ export default async function PostPage({ params }: Props) {
         }}
       />
       <header className="post-header">
-        <span className="category-tag">
-          {categoryMap[post.category.toLowerCase()] || post.category}
+        <Link href={categoryHref} className="category-tag">
+          {categoryKorean}
           {post.subcategory && ` > ${subcategoryMap[post.subcategory.toLowerCase()] || post.subcategory}`}
-        </span>
+        </Link>
         <h1 className="post-title">{post.title}</h1>
         <div className="post-meta">
           글쓴이: <span>{post.author}</span> — 발행일: {formattedDate} — 최종 수정일: {formattedUpdatedDate}
@@ -230,9 +265,57 @@ export default async function PostPage({ params }: Props) {
         </div>
       )}
 
-      <Link href="/" className="back-to-home">
-        ← 정원 첫 화면으로 돌아가기
-      </Link>
+      {guideChapters.length > 0 && (
+        <aside className="post-guide-callout">
+          <p>이 글이 포함된 읽기 가이드</p>
+          <Link href="/guides/conservative-progressive">
+            <span>{conservativeProgressiveGuide.title}</span>
+            <small>
+              {guideChapters.map((chapter) => `${chapter.number} ${chapter.title}`).join(" · ")}
+            </small>
+          </Link>
+        </aside>
+      )}
+
+      {relatedPosts.length > 0 && (
+        <section className="related-posts" aria-labelledby="related-posts-title">
+          <div className="related-posts-heading">
+            <h2 id="related-posts-title">함께 읽을 글</h2>
+            <Link href={categoryHref}>{categoryKorean} 글 전체 보기 →</Link>
+          </div>
+          <div className="related-posts-grid">
+            {relatedPosts.map((relatedPost) => (
+              <article key={relatedPost.slug}>
+                <span>{getCategoryLabel(relatedPost.category)}</span>
+                <h3>
+                  <Link href={`/posts/${relatedPost.slug}`}>{relatedPost.title}</Link>
+                </h3>
+                {relatedPost.description && <p>{relatedPost.description}</p>}
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <nav className="post-sequence-nav" aria-label="발행 순서대로 글 보기">
+        {olderPost ? (
+          <Link href={`/posts/${olderPost.slug}`} className="post-sequence-older">
+            <span>← 이전에 발행된 글</span>
+            <strong>{olderPost.title}</strong>
+          </Link>
+        ) : <span />}
+        {newerPost && (
+          <Link href={`/posts/${newerPost.slug}`} className="post-sequence-newer">
+            <span>다음에 발행된 글 →</span>
+            <strong>{newerPost.title}</strong>
+          </Link>
+        )}
+      </nav>
+
+      <div className="post-return-links">
+        <Link href="/" className="back-to-home">← 정원 첫 화면</Link>
+        <Link href="/archive" className="back-to-home">전체 사색 아카이브</Link>
+      </div>
     </article>
   );
 }
