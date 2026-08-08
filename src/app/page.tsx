@@ -3,8 +3,8 @@ import { getPostCoverImage } from "@/lib/getCoverImage";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import fs from "fs";
-import path from "path";
+import HomeModeTabs from "@/components/HomeModeTabs";
+import { getCategoryHref, getCategoryLabel } from "@/data/categories";
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
@@ -31,20 +31,6 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
         },
   };
 }
-
-const categoryMap: Record<string, string> = {
-  politics: "정치 (Politics)",
-  psychology: "심리학 (Psychology)",
-  culture: "문학·문화 (Culture)",
-  lifestyle: "삶과 자선 (Lifestyle)",
-};
-
-const categoryDescriptions: Record<string, string> = {
-  politics: "이념의 구호 뒤에 숨은 국가관, 정당 기계, 사법 제도, 그리고 힘의 현실을 분석합니다.",
-  psychology: "인간의 편향, 도덕 기초, 공포의 신경과학, 재현성 위기 등 인간 마음의 지형을 탐구합니다.",
-  culture: "고전 비극, 영화, 사회 비판을 통해 현대 문명의 도덕적 복잡성과 인간 실존을 반추합니다.",
-  lifestyle: "자선과 기부, 자본주의, 기술과 제도의 변화가 개인의 삶과 자유에 미치는 영향을 다룹니다.",
-};
 
 const subcategoryMap: { [key: string]: string } = {
   marriage: "결혼",
@@ -142,7 +128,7 @@ export default async function HomePage({ searchParams }: Props) {
   }, []);
 
   const categoryDisplayName = categoryFilter
-    ? (categoryMap[categoryFilter.toLowerCase()] || categoryFilter)
+    ? getCategoryLabel(categoryFilter)
     : undefined;
 
   if (filteredPosts.length === 0) {
@@ -178,39 +164,10 @@ export default async function HomePage({ searchParams }: Props) {
       {/* All Posts Section Title */}
       {/* Archive Mode Switcher Tabs (Show under top navigation bar) */}
       {!categoryFilter && !tagFilter && !searchFilter && (
-        <div className="archive-mode-tabs" style={{ display: "flex", gap: "1.5rem", borderBottom: "1px solid var(--border-color)", paddingBottom: "0.75rem", marginBottom: "2rem", marginTop: "0.5rem" }}>
-          <Link 
-            href="/" 
-            className={`nav-link-tab ${isDefaultHome ? 'active' : ''}`}
-            style={{ 
-              fontFamily: "var(--font-serif)", 
-              fontSize: "1.1rem", 
-              paddingBottom: "0.75rem", 
-              borderBottom: isDefaultHome ? "2px solid var(--brand-navy)" : "none", 
-              color: isDefaultHome ? "var(--brand-navy)" : "var(--text-muted)",
-              fontWeight: isDefaultHome ? "bold" : "normal",
-              textDecoration: "none"
-            }}
-          >
-            추천 사색
-          </Link>
-          <Link 
-            href="/?mode=all" 
-            rel="nofollow"
-            className={`nav-link-tab ${modeFilter === "all" ? 'active' : ''}`}
-            style={{ 
-              fontFamily: "var(--font-serif)", 
-              fontSize: "1.1rem", 
-              paddingBottom: "0.75rem", 
-              borderBottom: modeFilter === "all" ? "2px solid var(--brand-navy)" : "none", 
-              color: modeFilter === "all" ? "var(--brand-navy)" : "var(--text-muted)",
-              fontWeight: modeFilter === "all" ? "bold" : "normal",
-              textDecoration: "none"
-            }}
-          >
-            전체 사색 아카이브 ({sortedPosts.length}편)
-          </Link>
-        </div>
+        <HomeModeTabs
+          active={modeFilter === "all" ? "archive" : "featured"}
+          postCount={sortedPosts.length}
+        />
       )}
 
       {/* Category, Tag or Search Section Title */}
@@ -272,10 +229,10 @@ export default async function HomePage({ searchParams }: Props) {
             </div>
           )}
           <div className="featured-content" style={featuredPost.cover ? {} : { gridColumn: "1 / -1" }}>
-            <span className="category-tag">
-              {categoryMap[featuredPost.category.toLowerCase()] || featuredPost.category}
+            <Link href={getCategoryHref(featuredPost.category)} className="category-tag">
+              {getCategoryLabel(featuredPost.category)}
               {featuredPost.subcategory && ` > ${subcategoryMap[featuredPost.subcategory.toLowerCase()] || featuredPost.subcategory}`}
-            </span>
+            </Link>
             <h2 className="featured-title">
               <Link href={`/posts/${featuredPost.slug}`}>
                 {featuredPost.title}
@@ -323,10 +280,10 @@ export default async function HomePage({ searchParams }: Props) {
             </div>
           )}
           <div className="featured-content" style={featuredPost.cover ? {} : { gridColumn: "1 / -1" }}>
-            <span className="category-tag">
-              {categoryMap[featuredPost.category.toLowerCase()] || featuredPost.category}
+            <Link href={getCategoryHref(featuredPost.category)} className="category-tag">
+              {getCategoryLabel(featuredPost.category)}
               {featuredPost.subcategory && ` > ${subcategoryMap[featuredPost.subcategory.toLowerCase()] || featuredPost.subcategory}`}
-            </span>
+            </Link>
             <h2 className="featured-title">
               <Link href={`/posts/${featuredPost.slug}`}>
                 {featuredPost.title}
@@ -381,10 +338,10 @@ export default async function HomePage({ searchParams }: Props) {
                   </div>
                 )}
                 <div className="article-card-content">
-                  <span className="category-tag">
-                    {categoryMap[post.category.toLowerCase()] || post.category}
+                  <Link href={getCategoryHref(post.category)} className="category-tag">
+                    {getCategoryLabel(post.category)}
                     {post.subcategory && ` > ${subcategoryMap[post.subcategory.toLowerCase()] || post.subcategory}`}
-                  </span>
+                  </Link>
                   <h4 className="card-title">
                     <Link href={`/posts/${post.slug}`}>
                       {post.title}
@@ -447,7 +404,7 @@ export default async function HomePage({ searchParams }: Props) {
           }}>
             철학, 심리학, 인물 비평, 문화 분석 등 정원사 헤론이 기록해 온 총 {sortedPosts.length}편의 모든 사색 에세이를 연대기 순으로 만나보실 수 있습니다.
           </p>
-          <Link href="/?mode=all" rel="nofollow" className="read-more-btn" style={{
+          <Link href="/archive" className="read-more-btn" style={{
             fontSize: "1.1rem",
             padding: "0.25rem 0.5rem",
             borderBottomWidth: "3px",

@@ -69,13 +69,13 @@ export default function RootLayout({
             <hr className="editorial-hr" />
             <nav className="site-nav">
               <Link href="/" className="nav-link">홈</Link>
-              <Link href="/?category=Philosophy" className="nav-link">철학</Link>
-              <Link href="/?category=Humanism" className="nav-link">인본주의</Link>
-              <Link href="/?category=Psychology" className="nav-link">심리학</Link>
-              <Link href="/?category=Politics" className="nav-link">정치</Link>
-              <Link href="/?category=Culture" className="nav-link">문화</Link>
-              <Link href="/?category=Lifestyle" className="nav-link">생활</Link>
-              <Link href="/?category=Influencer" className="nav-link">인물 비평</Link>
+              <Link href="/categories/philosophy" className="nav-link">철학</Link>
+              <Link href="/categories/humanism" className="nav-link">인본주의</Link>
+              <Link href="/categories/psychology" className="nav-link">심리학</Link>
+              <Link href="/categories/politics" className="nav-link">정치</Link>
+              <Link href="/categories/culture" className="nav-link">문화</Link>
+              <Link href="/categories/lifestyle" className="nav-link">생활</Link>
+              <Link href="/categories/influencer" className="nav-link">인물 비평</Link>
               <Link href="/board" className="nav-link">자유게시판</Link>
               <Link href="/about" className="nav-link">블로그 소개</Link>
             </nav>
@@ -93,6 +93,8 @@ export default function RootLayout({
           <div className="container">
             <nav className="footer-nav">
               <Link href="/">홈</Link>
+              <Link href="/guides/conservative-progressive">읽기 가이드</Link>
+              <Link href="/archive">전체 아카이브</Link>
               <Link href="/board">자유게시판</Link>
               <Link href="/about">블로그 소개</Link>
             </nav>
