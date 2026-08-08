@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import HomeModeTabs from "@/components/HomeModeTabs";
 import { conservativeProgressiveGuide } from "@/data/readingGuides";
 import { getCategoryLabel } from "@/data/categories";
+import { getPostCoverImage } from "@/lib/getCoverImage";
 import { posts } from "@/lib/posts";
 
 export const metadata: Metadata = {
@@ -65,11 +67,28 @@ export default function ConservativeProgressiveGuidePage() {
                   return null;
                 }
 
+                const cover = getPostCoverImage(post);
+
                 return (
                   <li key={slug} className="guide-reading-item">
-                    <span className="guide-item-number" aria-hidden="true">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
+                    <Link
+                      href={`/posts/${post.slug}`}
+                      className={`guide-item-cover ${cover ? "" : "guide-item-cover-empty"}`}
+                      aria-label={`${post.title} 읽기`}
+                    >
+                      {cover && (
+                        <Image
+                          src={cover}
+                          alt=""
+                          width={320}
+                          height={180}
+                          sizes="(max-width: 700px) 105px, 140px"
+                        />
+                      )}
+                      <span aria-hidden="true">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                    </Link>
                     <div className="guide-item-content">
                       <p className="guide-item-meta">
                         {getCategoryLabel(post.category)}
