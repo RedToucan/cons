@@ -9,6 +9,8 @@
   --brand-navy: #153225;      /* Deep Forest Green for primary headings & authority */
   --brand-burgundy: #9b5134;  /* Terracotta/Copper for links & highlights */
   --brand-accent: #c09d3e;    /* Warm gold accent */
+  --accent-sky: #0ea5e9;      /* Crisp bright sky blue for refreshing focal points */
+  --heading-h2: #2b4c6f;      /* Slate Blue-Gray for relaxed, intellectual subheadings */
   --border-color: #e5dfd2;    /* Soft warm earthy separator */
   --card-shadow: 0 4px 12px rgba(21, 50, 37, 0.03);
   --card-hover-shadow: 0 12px 24px rgba(21, 50, 37, 0.06);
@@ -33,6 +35,8 @@
     --brand-navy: #8cbfa3;      /* Soft light sage green */
     --brand-burgundy: #e29375;  /* Warm peach/terracotta */
     --brand-accent: #d4af37;    /* Gold */
+    --accent-sky: #38bdf8;      /* Bright sky blue for dark mode */
+    --heading-h2: #93c5fd;      /* Soft ice sky blue for dark mode subheadings */
     --border-color: #242c27;
     --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     --card-hover-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
@@ -805,22 +809,23 @@ a:hover {
 
 .post-body h2 {
   font-family: var(--font-serif);
-  font-size: 1.9rem;
-  color: var(--brand-burgundy);
-  margin: 4rem 0 1.5rem 0;
-  border-bottom: 2px solid var(--brand-burgundy);
-  padding-left: 0.75rem;
-  border-left: 4px solid var(--brand-accent);
-  padding-bottom: 0.5rem;
+  font-size: 1.85rem;
+  color: var(--heading-h2);
+  margin: 4.5rem 0 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid var(--accent-sky);
   font-weight: 700;
-  letter-spacing: -0.01em;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
 }
 
 .post-body h3 {
   font-family: var(--font-serif);
-  font-size: 1.45rem;
-  color: var(--brand-accent);
+  font-size: 1.4rem;
+  color: var(--text-main);
   margin: 3rem 0 1.25rem 0;
+  padding-left: 0.75rem;
+  border-left: 2.5px solid var(--border-color);
   font-weight: 700;
   letter-spacing: -0.01em;
 }
