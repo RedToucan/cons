@@ -64,6 +64,8 @@ function findRelatedPosts(currentPost: Post) {
     .map(({ post }) => post);
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return posts.map((post) => ({
     slug: post.slug,

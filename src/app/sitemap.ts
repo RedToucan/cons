@@ -2,6 +2,8 @@ import { MetadataRoute } from "next";
 import { posts } from "@/lib/posts";
 import { categoryDefinitions } from "@/data/categories";
 
+export const revalidate = 86400;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com").replace(/\/+$/, "");
   const latestPostUpdate = posts.reduce(
