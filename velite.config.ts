@@ -30,7 +30,7 @@ export default defineConfig({
         content: s.mdx(),
         metadata: s.metadata(),
         path: s.path(),
-        plainText: s.string().optional()
+        cover: s.string().optional()
       })
       .transform((data) => {
         let finalSlug = data.slug;
@@ -50,7 +50,7 @@ export default defineConfig({
           finalSubcategory = parts[2];
         }
 
-        // Dynamic Korean readingTime calculation
+        // Dynamic Korean readingTime calculation & cover precomputation
         let rawContent = '';
         const possibleExtensions = ['.mdx', '.md'];
         for (const ext of possibleExtensions) {
@@ -65,13 +65,35 @@ export default defineConfig({
         const charCount = cleanContent.length;
         const koreanReadingTime = Math.max(1, Math.round(charCount / 1200));
 
+        // Pre-compute cover image at build time
+        let coverImage: string | undefined = undefined;
+        const match = rawContent.match(/<PostImage\s+[^>]*src=["']([^"']+)["']/i);
+        if (match && match[1]) {
+          const imageRelativePath = match[1];
+          const publicImagePath = path.join(process.cwd(), 'public', imageRelativePath.replace(/^\//, ''));
+          if (fs.existsSync(publicImagePath)) {
+            coverImage = imageRelativePath;
+          }
+        }
+
+        if (!coverImage) {
+          const extensions = ['webp', 'png', 'jpg', 'jpeg', 'svg'];
+          for (const ext of extensions) {
+            const imgPath = path.join(process.cwd(), 'public', 'images', `${finalSlug}.${ext}`);
+            if (fs.existsSync(imgPath)) {
+              coverImage = `/images/${finalSlug}.${ext}`;
+              break;
+            }
+          }
+        }
+
         return {
           ...data,
           updated: data.updated ?? data.date,
           slug: finalSlug,
           subcategory: finalSubcategory,
           permalink: `/posts/${finalSlug}`,
-          plainText: cleanContent,
+          cover: coverImage,
           metadata: {
             ...data.metadata,
             readingTime: koreanReadingTime
