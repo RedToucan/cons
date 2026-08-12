@@ -36,6 +36,24 @@ class VeliteWebpackPlugin {
 }
 
 const nextConfig: NextConfig = {
+  async headers() {
+    const queryVariantHeaders = [
+      {
+        key: "X-Robots-Tag",
+        value: "noindex, follow",
+      },
+      {
+        key: "Cache-Control",
+        value: "private, no-store, no-cache, max-age=0, must-revalidate",
+      },
+    ];
+
+    return ["tag", "category", "subcategory", "mode", "q"].map((key) => ({
+      source: "/",
+      has: [{ type: "query" as const, key }],
+      headers: queryVariantHeaders,
+    }));
+  },
   async redirects() {
     return [
       {
