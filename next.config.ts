@@ -36,6 +36,9 @@ class VeliteWebpackPlugin {
 }
 
 const nextConfig: NextConfig = {
+  images: {
+    unoptimized: true,
+  },
   async headers() {
     const queryVariantHeaders = [
       {
