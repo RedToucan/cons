@@ -1,6 +1,6 @@
 # 📚 보수주의자의 정원 - 전체 포스트 목록
 
-> 작성된 총 포스트 수: **362개**
+> 작성된 총 포스트 수: **363개**
 
 ## 📁 Climate (6개)
 
@@ -478,8 +478,10 @@
 - `2026-06-14T00:00:00.000Z` [진보는 왜 보수를 권위주의로 오해하는가: 레이코프와 스테너 비평](file:///E:/homeproject/cons/content/posts/philosophy/why-liberals-misunderstand-conservatism-as-authoritarianism.mdx) - `why-liberals-misunderstand-conservatism-as-authoritarianism`
   - *카렌 스테너(Karen Stenner)의 'The Authoritarian Dynamic'을 통해 보수주의와 권위주의의 구분을 살펴보고, 진보 진영의 레이코프식 심리 환원론을 넘어선 보다 정교한 보수주의 비평의 가능성과 한계를 논합니다.*
 
-## 📁 Politics (78개)
+## 📁 Politics (79개)
 
+- `2026-08-23T00:00:00.000Z` [친일파 논란과 베이시안 접근법](file:///E:/homeproject/cons/content/posts/politics/pro-japanese-controversy-and-bayesian-approach.mdx) - `pro-japanese-controversy-and-bayesian-approach`
+  - *친일파 논란을 베이시안 확률론의 관점에서 재해석하여, 1945년 해방 시점에 평가를 고정하지 않고 백선엽과 김일성의 전 생애적 증거들을 통해 역사적 인물을 입체적이고 일관되게 평가하는 방법을 제안합니다.*
 - `2026-08-22T00:00:00.000Z` [김지하는 왜 보수주의자가 되었는가](file:///E:/homeproject/cons/content/posts/politics/why-did-kim-ji-ha-become-a-conservative.mdx) - `why-did-kim-ji-ha-become-a-conservative`
   - *1970년대 저항의 시인이었던 김지하가 1991년 '죽음의 굿판'을 걷어치우라는 비판에 이르기까지, 정치적 감정과 열정에 대한 의심을 통해 현실주의적 보수성에 도달한 사상적 여정을 분석합니다.*
 - `2026-08-07T00:00:00.000Z` [송시열은 보수주의자였을까, 리버럴이었을까](file:///E:/homeproject/cons/content/posts/politics/was-song-si-yeol-conservative-or-liberal.mdx) - `was-song-si-yeol-conservative-or-liberal`
