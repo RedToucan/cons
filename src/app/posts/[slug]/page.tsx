@@ -183,7 +183,9 @@ export default async function PostPage({ params }: Props) {
       "name": "아르고스의 노트",
       "logo": {
         "@type": "ImageObject",
-        "url": `${siteUrl}/favicon.ico`,
+        "url": `${siteUrl}/icon/publisher-logo.png`,
+        "width": 512,
+        "height": 512,
       },
     },
   };
