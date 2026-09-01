@@ -34,7 +34,7 @@ export default function YouTube({ id, url, title = 'YouTube video player' }: You
     );
   }
 
-  const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+  const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}`;
 
   return (
     <div
@@ -54,6 +54,7 @@ export default function YouTube({ id, url, title = 'YouTube video player' }: You
       <iframe
         src={embedUrl}
         title={title}
+        loading="lazy"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen

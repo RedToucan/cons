@@ -21,25 +21,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  const categoryEntries: MetadataRoute.Sitemap = categoryDefinitions.map((category) => {
-    const categoryPosts = posts.filter(
-      (post) => post.category.toLowerCase() === category.value.toLowerCase(),
-    );
-    const categoryLastModified = categoryPosts.reduce(
-      (latest, post) => {
+  const categoryEntries: MetadataRoute.Sitemap = categoryDefinitions
+    .map((category) => {
+      const categoryPosts = posts.filter(
+        (post) => post.category.toLowerCase() === category.value.toLowerCase(),
+      );
+
+      if (categoryPosts.length === 0) {
+        return null;
+      }
+
+      const categoryLastModified = categoryPosts.reduce((latest, post) => {
         const updated = new Date(post.updated);
         return updated > latest ? updated : latest;
-      },
-      new Date(0),
-    );
+      }, new Date(0));
 
-    return {
-      url: `${siteUrl}/categories/${category.slug}`,
-      lastModified: categoryLastModified,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    };
-  });
+      return {
+        url: `${siteUrl}/categories/${category.slug}`,
+        lastModified: categoryLastModified,
+        changeFrequency: "weekly" as const,
+        priority: 0.7,
+      };
+    })
+    .filter((entry): entry is NonNullable<typeof entry> => entry !== null);
 
   return [
     {

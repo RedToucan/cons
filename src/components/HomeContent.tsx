@@ -407,7 +407,7 @@ export default function HomeContent({ allPosts }: { allPosts: PostItemMeta[] }) 
               marginBottom: '1rem',
             }}
           >
-            보수주의자의 정원 서재 전체 탐색하기
+            아르고스의 노트 전체 탐색하기
           </h4>
           <p
             style={{
@@ -418,7 +418,7 @@ export default function HomeContent({ allPosts }: { allPosts: PostItemMeta[] }) 
               lineHeight: '1.7',
             }}
           >
-            철학, 심리학, 인물 비평, 문화 분석 등 정원사 헤론이 기록해 온 총 {sortedPosts.length}편의 모든 사색
+            철학, 심리학, 인물 비평, 문화 분석 등 헤론이 기록해 온 총 {sortedPosts.length}편의 모든 사색
             에세이를 연대기 순으로 만나보실 수 있습니다.
           </p>
           <Link

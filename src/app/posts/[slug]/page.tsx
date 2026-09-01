@@ -315,7 +315,7 @@ export default async function PostPage({ params }: Props) {
       </nav>
 
       <div className="post-return-links">
-        <Link href="/" className="back-to-home">← 정원 첫 화면</Link>
+        <Link href="/" className="back-to-home">← 첫 화면으로</Link>
         <Link href="/archive" className="back-to-home">전체 사색 아카이브</Link>
       </div>
     </article>

@@ -38,7 +38,7 @@ function SearchInputInner() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="정원 서재에서 검색..."
+          placeholder="노트 전체에서 검색..."
           className="search-input"
           aria-label="에세이 검색"
         />
@@ -89,7 +89,7 @@ export default function SearchInput() {
         <div className="search-wrapper">
           <input
             type="text"
-            placeholder="정원 서재에서 검색..."
+            placeholder="노트 전체에서 검색..."
             className="search-input"
             disabled
           />
