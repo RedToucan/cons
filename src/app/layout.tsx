@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Playfair_Display, Lora, Inter } from "next/font/google";
 import Link from "next/link";
@@ -27,16 +27,16 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     (process.env.NEXT_PUBLIC_SITE_URL || "https://argosnotes.com").replace(/\/+$/, "")
   ),
-  title: "아르고스의 노트 | 심리학과, 경험주의로 읽는 세상",
-  description: "심리학과, 경험주의로 읽는 세상을 나누는 조용한 사색의 공간. 철학, 심리학, 역사, 정치, 문화를 다룹니다.",
+  title: "아르고스의 노트 | 심리학과 경험주의로 읽는 세상",
+  description: "심리학과 경험주의로 읽는 세상을 나누는 조용한 사색의 공간. 철학, 심리학, 역사, 정치, 문화를 다룹니다.",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/apple-icon.png",
   },
   openGraph: {
-    title: "아르고스의 노트 | 심리학과, 경험주의로 읽는 세상",
-    description: "심리학과, 경험주의로 읽는 세상을 나누는 조용한 사색의 공간. 철학, 심리학, 역사, 정치, 문화를 다룹니다.",
+    title: "아르고스의 노트 | 심리학과 경험주의로 읽는 세상",
+    description: "심리학과 경험주의로 읽는 세상을 나누는 조용한 사색의 공간. 철학, 심리학, 역사, 정치, 문화를 다룹니다.",
     url: "/",
     siteName: "아르고스의 노트",
     locale: "ko_KR",
@@ -44,9 +44,16 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "아르고스의 노트 | 심리학과, 경험주의로 읽는 세상",
-    description: "심리학과, 경험주의로 읽는 세상을 나누는 조용한 사색의 공간. 철학, 심리학, 역사, 정치, 문화를 다룹니다.",
+    title: "아르고스의 노트 | 심리학과 경험주의로 읽는 세상",
+    description: "심리학과 경험주의로 읽는 세상을 나누는 조용한 사색의 공간. 철학, 심리학, 역사, 정치, 문화를 다룹니다.",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fbf9f3" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f1210" },
+  ],
 };
 
 export default function RootLayout({
@@ -57,13 +64,20 @@ export default function RootLayout({
   return (
     <html lang="ko" className={`${playfair.variable} ${lora.variable} ${inter.variable}`} suppressHydrationWarning>
       <body suppressHydrationWarning>
+        {/* RSS autodiscovery — kept here (not in metadata) because every page overrides `alternates`. */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="아르고스의 노트"
+          href="/feed.xml"
+        />
         <header className="site-header">
           <div className="container">
             <div className="logo-area">
               <Link href="/">
-                <h1 className="logo-title">아르고스의 노트</h1>
+                <p className="logo-title">아르고스의 노트</p>
               </Link>
-              <p className="logo-sub">심리학과, 경험주의로 읽는 세상</p>
+              <p className="logo-sub">심리학과 경험주의로 읽는 세상</p>
               <SearchInput />
             </div>
             <hr className="editorial-hr" />
@@ -97,12 +111,13 @@ export default function RootLayout({
               <Link href="/archive">전체 아카이브</Link>
               <Link href="/board">자유게시판</Link>
               <Link href="/about">블로그 소개</Link>
+              <a href="/feed.xml">RSS</a>
             </nav>
             <p className="copyright">
               © {new Date().getFullYear()} 아르고스의 노트. All rights reserved.
             </p>
             <p className="footer-motto" style={{ marginTop: '0.5rem', fontSize: '0.8rem' }}>
-              “심리학과, 경험주의로 읽는 세상.”
+              “심리학과 경험주의로 읽는 세상.”
             </p>
           </div>
         </footer>

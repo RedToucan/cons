@@ -34,8 +34,11 @@ export default function HomePage() {
   }));
 
   return (
-    <Suspense fallback={<div style={{ minHeight: '60vh' }} />}>
-      <HomeContent allPosts={postMeta} />
-    </Suspense>
+    <>
+      <h1 className="sr-only">아르고스의 노트 — 심리학과 경험주의로 읽는 세상</h1>
+      <Suspense fallback={<div style={{ minHeight: '60vh' }} />}>
+        <HomeContent allPosts={postMeta} />
+      </Suspense>
+    </>
   );
 }
