@@ -115,7 +115,7 @@ export default function RootLayout({
           <div className="container">
             <nav className="footer-nav">
               <Link href="/">홈</Link>
-              <Link href="/guides/conservative-progressive">읽기 가이드</Link>
+              <Link href="/guides">읽기 가이드</Link>
               <Link href="/archive">전체 아카이브</Link>
               <Link href="/board">자유게시판</Link>
               <Link href="/about">블로그 소개</Link>

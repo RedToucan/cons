@@ -76,14 +76,15 @@ const components = {
 
 interface MdxContentProps {
   code: string;
+  components?: Record<string, React.ComponentType<Record<string, unknown>>>;
 }
 
-export default function MdxContent({ code }: MdxContentProps) {
+export default function MdxContent({ code, components: extraComponents }: MdxContentProps) {
   if (!code) return null;
 
   // Velite compiles MDX files into executable code strings.
   // Here, we evaluate the code using Function constructor, passing the React jsx-runtime
   // to reconstitute the MDX content as a renderable React component.
   const Component = new Function(code)(runtime).default;
-  return <Component components={components} />;
+  return <Component components={{ ...components, ...extraComponents }} />;
 }

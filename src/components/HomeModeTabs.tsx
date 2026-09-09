@@ -14,7 +14,7 @@ type HomeModeTab = {
 export default function HomeModeTabs({ active, postCount }: HomeModeTabsProps) {
   const tabs: HomeModeTab[] = [
     { key: "featured", href: "/", label: "추천 사색" },
-    { key: "guide", href: "/guides/conservative-progressive", label: "읽기 가이드" },
+    { key: "guide", href: "/guides", label: "읽기 가이드" },
     { key: "archive", href: "/archive", label: `전체 사색 아카이브 (${postCount}편)` },
   ];
 

@@ -101,6 +101,64 @@ export default defineConfig({
         };
       })
     },
+    guides: {
+      name: 'Guide',
+      pattern: 'guides/**/*.mdx',
+      schema: s.object({
+        title: s.string().max(100),
+        slug: s.string().optional(),
+        kicker: s.string(),
+        description: s.string(),
+        note: s.string().optional(),
+        content: s.mdx(),
+        path: s.path()
+      })
+      .transform((data) => {
+        const parts = data.path.split(/[/\\]/);
+        const filename = parts[parts.length - 1];
+        const finalSlug = data.slug || filename.replace(/\.mdx?$/, '');
+
+        let rawContent = '';
+        for (const ext of ['.mdx', '.md']) {
+          const fullPath = path.join('content', data.path + ext);
+          if (fs.existsSync(fullPath)) {
+            rawContent = fs.readFileSync(fullPath, 'utf-8');
+            break;
+          }
+        }
+
+        const attr = (source: string, name: string) => {
+          const m = source.match(new RegExp(`${name}=["']([^"']+)["']`));
+          return m ? m[1] : '';
+        };
+
+        const chapters = rawContent
+          .split(/<GuideChapter\s+/)
+          .slice(1)
+          .map((block) => {
+            const attrEnd = block.indexOf('>');
+            const attrs = block.slice(0, attrEnd);
+            const body = block.slice(attrEnd + 1).split('</GuideChapter>')[0];
+            const slugs = [...body.matchAll(/<GuideItem\s+[^>]*slug=["']([^"']+)["']/g)].map(
+              (m) => m[1]
+            );
+            return {
+              id: attr(attrs, 'id'),
+              number: attr(attrs, 'number'),
+              title: attr(attrs, 'title'),
+              slugs
+            };
+          });
+
+        return {
+          ...data,
+          slug: finalSlug,
+          permalink: `/guides/${finalSlug}`,
+          chapters,
+          slugs: chapters.flatMap((chapter) => chapter.slugs)
+        };
+      })
+    },
     about: {
       name: 'About',
       pattern: 'about.mdx',
