@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { posts } from "@/lib/posts";
 import { categoryDefinitions } from "@/data/categories";
+import { readingGuides } from "@/lib/guides";
 
 export const revalidate = 86400;
 
@@ -64,11 +65,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${siteUrl}/guides/conservative-progressive`,
+      url: `${siteUrl}/guides`,
       lastModified: latestPostUpdate,
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    ...readingGuides.map((guide) => ({
+      url: `${siteUrl}/guides/${guide.slug}`,
+      lastModified: latestPostUpdate,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
     ...categoryEntries,
     ...postEntries,
   ];

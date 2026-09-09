@@ -8,7 +8,7 @@ import {
   getCategoryHref,
   getCategoryLabel,
 } from "@/data/categories";
-import { conservativeProgressiveGuide } from "@/data/readingGuides";
+import { getGuidesForPost } from "@/lib/guides";
 
 const subcategoryMap: { [key: string]: string } = {
   marriage: "결혼",
@@ -157,9 +157,7 @@ export default async function PostPage({ params }: Props) {
       ? postsByDate[currentPostIndex + 1]
       : undefined;
   const relatedPosts = findRelatedPosts(post);
-  const guideChapters = conservativeProgressiveGuide.chapters.filter((chapter) =>
-    chapter.slugs.includes(post.slug),
-  );
+  const postGuides = getGuidesForPost(post.slug);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -269,17 +267,17 @@ export default async function PostPage({ params }: Props) {
         </div>
       )}
 
-      {guideChapters.length > 0 && (
-        <aside className="post-guide-callout">
+      {postGuides.map(({ guide, chapters }) => (
+        <aside key={guide.slug} className="post-guide-callout">
           <p>이 글이 포함된 읽기 가이드</p>
-          <Link href="/guides/conservative-progressive">
-            <span>{conservativeProgressiveGuide.title}</span>
+          <Link href={`/guides/${guide.slug}`}>
+            <span>{guide.title}</span>
             <small>
-              {guideChapters.map((chapter) => `${chapter.number} ${chapter.title}`).join(" · ")}
+              {chapters.map((chapter) => `${chapter.number} ${chapter.title}`).join(" · ")}
             </small>
           </Link>
         </aside>
-      )}
+      ))}
 
       {relatedPosts.length > 0 && (
         <section className="related-posts" aria-labelledby="related-posts-title">
